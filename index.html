@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My Health Code - Your Life, Your Care, Your Way.</title>
+<meta name="description" content="My Health Code turns medicine's hardest conversation into a clear, confident, deeply personal choice. A physician-built advance care planning platform developed at UTHealth Houston - helping patients communicate what matters most to them, before they're too sick to speak for themselves.">
+<meta name="author" content="My Health Code">
+<meta name="theme-color" content="#283848">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="My Health Code">
+<meta property="og:title" content="My Health Code - Comfort and clarity, when it matters most.">
+<meta property="og:description" content="Advance care planning, developed at UTHealth Houston. A physician-built platform helping patients communicate what matters most - before they're too sick to speak for themselves.">
+<meta property="og:image" content="images/og_card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="My Health Code - Your life, your care, your way.">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="My Health Code - Comfort and clarity, when it matters most.">
+<meta name="twitter:description" content="Advance care planning, developed at UTHealth Houston. Helping patients communicate what matters most - before they're too sick to speak for themselves.">
+<meta name="twitter:image" content="images/og_card.png">
+<meta name="twitter:image:alt" content="My Health Code - Your life, your care, your way.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+ /* STEEL MIST palette: cool blue-gray + warm off-white */
+ --slate:#6e8aa0;--sl:#9db2c4;--sd:#44576a;
+ --sp:#e4ebf2;--sm:#bdcad5;
+ --navy:#283848;--char:#2c3e48;
+ --ww:#f2efea;--ow:#eae6df;
+ --tp:#283848;--tm:#5e6f82;--tl:#8a9aaa;
+ --br:rgba(110,138,160,0.18);
+ --ease:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--ww);color:var(--tp);line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(30,42,56,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(110,138,160,0.2);transition:var(--ease)}
+nav.scrolled{padding:0.6rem 3rem}
+.nav-logo img{height:38px;width:auto;display:block;background:transparent}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(242,239,234,0.65);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--sl)}
+.nav-cta{background:var(--slate)!important;color:white!important;padding:0.48rem 1.25rem;border-radius:50px}
+.nav-cta:hover{background:var(--sd)!important}
+
+section{scroll-margin-top:80px}
+.container{max-width:1100px;margin:0 auto;padding:0 2.5rem}
+.slabel{font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate);margin-bottom:0.9rem;font-weight:500}
+.stitle{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.2vw,2.8rem);line-height:1.2;font-weight:400;color:var(--navy);margin-bottom:1rem}
+.stitle em{font-style:italic;color:var(--slate)}
+.sdiv{width:36px;height:2px;background:var(--slate);margin:1.6rem 0 1.3rem;border-radius:2px}
+.btext{font-size:1.02rem;color:var(--tm);line-height:1.82}
+
+/* HERO */
+#home{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;background:var(--navy);padding:8rem 0 5rem}
+.hbg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 68% 40%,rgba(110,138,160,0.32) 0%,transparent 68%),radial-gradient(ellipse 45% 70% at 8% 75%,rgba(110,138,160,0.14) 0%,transparent 60%);pointer-events:none}
+.hgrid{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:3rem;position:relative;z-index:1}
+.hey{font-size:0.73rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sl);margin-bottom:1.4rem;display:flex;align-items:center;gap:0.7rem}
+.hey::before{content:'';width:26px;height:1px;background:var(--sl)}
+.hh{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.6vw,2.95rem);line-height:1.15;color:#f2efea;margin-bottom:1.7rem;font-weight:400;text-wrap:balance;max-width:none}
+.hh em{font-style:italic;color:var(--sl)}
+.hb{font-size:1.02rem;color:rgba(242,239,234,0.68);line-height:1.82;margin-bottom:2.4rem;max-width:460px}
+.hact{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.hstat{display:inline-flex;align-items:center;gap:1.2rem;padding:1rem 1.4rem 1rem 1.2rem;border:1px solid rgba(110,138,160,0.28);border-left:3px solid var(--sl);border-radius:0 14px 14px 0;background:rgba(110,138,160,0.06);backdrop-filter:blur(6px);max-width:460px;transition:var(--ease)}
+.hstat:hover{background:rgba(110,138,160,0.1);border-color:rgba(110,138,160,0.42)}
+.hstat-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:2.15rem;line-height:1;color:#f2efea;font-weight:400;letter-spacing:-0.01em;white-space:nowrap;display:inline-flex;align-items:baseline}
+.hstat-num sub{font-size:0.55em;font-style:normal;color:var(--sl);vertical-align:baseline;margin-left:0.18em;letter-spacing:0.02em;line-height:1}
+.hstat-body{display:flex;flex-direction:column;gap:0.25rem;min-width:0}
+.hstat-label{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--sl);font-weight:500}
+.hstat-sub{font-size:0.82rem;color:rgba(242,239,234,0.72);line-height:1.45}
+.bp{background:var(--ww);color:var(--navy);padding:0.82rem 1.9rem;border-radius:50px;text-decoration:none;font-size:0.88rem;font-weight:500;letter-spacing:0.03em;transition:var(--ease);border:1.5px solid var(--ww);display:inline-block}
+.bp:hover{background:var(--ow);border-color:var(--ow);transform:translateY(-2px)}
+.bg{background:transparent;color:rgba(242,239,234,0.78);padding:0.82rem 1.9rem;border-radius:50px;text-decoration:none;font-size:0.88rem;transition:var(--ease);border:1.5px solid rgba(242,239,234,0.22);display:inline-block}
+.bg:hover{border-color:rgba(242,239,234,0.55);color:rgba(242,239,234,1);transform:translateY(-2px)}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3.5rem;padding-top:3rem;border-top:1px solid rgba(110,138,160,0.18)}
+.chip{background:rgba(110,138,160,0.08);border:1px solid rgba(110,138,160,0.22);border-radius:14px;padding:1.3rem 1.5rem;transition:var(--ease);min-width:0;display:flex;align-items:center;gap:1.1rem}
+.chip:hover{background:rgba(110,138,160,0.16);transform:translateY(-2px);border-color:rgba(110,138,160,0.38)}
+.chip-ico{width:44px;height:44px;background:rgba(110,138,160,0.16);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chip-ico svg{width:22px;height:22px;stroke:var(--sl);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.chip-body{display:flex;flex-direction:column;min-width:0;flex:1}
+.chip-head{font-family:'DM Serif Display',serif;font-size:1.15rem;color:#f2efea;display:block;line-height:1.2;margin-bottom:0.28rem}
+.chip-sub{font-size:0.74rem;letter-spacing:0.04em;text-transform:uppercase;color:rgba(242,239,234,0.5);display:block;line-height:1.45}
+
+/* IPAD */
+.hvis{display:flex;justify-content:center;align-items:center;position:relative}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(110,138,160,0.1);animation:pr 5s ease-in-out infinite}
+.r1{width:420px;height:420px}.r2{width:540px;height:540px;animation-delay:1.2s;opacity:0.55}.r3{width:660px;height:660px;animation-delay:2.4s;opacity:0.28}
+@keyframes pr{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.ipad{width:520px;height:375px;background:linear-gradient(160deg,#2a2a2a,#161616);border-radius:26px;border:2px solid rgba(255,255,255,0.09);padding:18px 40px 18px 40px;position:relative;z-index:2;box-shadow:0 36px 90px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.08);animation:fl 6s ease-in-out infinite}
+/* Camera on LEFT short edge (landscape, home on right) - vertically centered */
+.ipad-cam{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.18);box-shadow:inset 0 0 2px rgba(0,0,0,0.8)}
+/* Home button on RIGHT short edge - circular, vertically centered */
+.ipad-home{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.03)}
+.ipad-screen{width:100%;height:100%;background:linear-gradient(160deg,#1a2632,#141f2a);border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer}
+.ipad-screen::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 45%,rgba(110,138,160,0.28) 0%,transparent 70%);pointer-events:none}
+.ipad-screen::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(110,138,160,0.4),transparent);pointer-events:none}
+.ipad-logo-wrap{position:relative;z-index:1;padding:0 32px;transition:opacity 0.3s ease}
+.ipad-logo-wrap img{width:340px;max-width:100%;object-fit:contain;background:transparent}
+.ipad-screen:hover .ipad-logo-wrap{opacity:0.35}
+.ipad-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;z-index:3;opacity:0;transition:opacity 0.3s ease,transform 0.3s ease;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+.ipad-screen:hover .ipad-play{opacity:1;transform:translate(-50%,-50%) scale(1.05)}
+.ipad-play svg{width:26px;height:26px;fill:var(--navy);margin-left:4px}
+.ipad-caption{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,239,234,0.55);z-index:3;opacity:0;transition:opacity 0.3s ease;white-space:nowrap;pointer-events:none}
+.ipad-screen:hover .ipad-caption{opacity:1}
+/* Video modal */
+.vmodal{position:fixed;inset:0;background:rgba(0,0,0,0.88);display:none;align-items:center;justify-content:center;z-index:200;padding:2rem}
+.vmodal.open{display:flex}
+.vmodal-inner{width:min(1100px,95vw);aspect-ratio:16/9;position:relative;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,0.7)}
+.vmodal-inner iframe{width:100%;height:100%;border:0;display:block}
+.vmodal-close{position:absolute;top:-44px;right:0;background:transparent;border:1px solid rgba(255,255,255,0.3);color:white;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:var(--ease)}
+.vmodal-close:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6)}
+
+
+/* MISSION */
+#mission{background:var(--ow);padding:5.5rem 0;border-top:1px solid var(--br);border-bottom:1px solid var(--br)}
+.miss-grid{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:center}
+.miss-q{font-family:'DM Serif Display',serif;font-size:1.32rem;line-height:1.65;color:var(--char);font-style:italic;border-left:3px solid var(--sm);padding-left:1.7rem;margin-bottom:1.5rem}
+
+/* APP */
+#about-app{padding:7rem 0;background:var(--ww)}
+.tcol{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3.5rem}
+.fcard{background:white;border:1px solid var(--br);border-radius:16px;padding:2rem 1.4rem 1.8rem;transition:var(--ease);position:relative;overflow:hidden}
+.fcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--slate),var(--sl));transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease}
+.fcard:hover{transform:translateY(-4px);border-color:var(--sm);box-shadow:0 12px 40px rgba(110,138,160,0.1)}
+.fcard:hover::before{transform:scaleX(1)}
+.fstep{position:absolute;top:1.1rem;right:1.2rem;font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--sm);line-height:1;font-style:italic;transition:color 0.3s ease}
+.fcard:hover .fstep{color:var(--slate)}
+.fico{width:46px;height:46px;background:var(--sp);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
+.fico svg{width:22px;height:22px;stroke:var(--sd);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ftit{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:0.55rem;font-weight:400;line-height:1.28;padding-right:1.5rem}
+.fdesc{font-size:0.93rem;color:var(--tm);line-height:1.72}
+
+/* STATS */
+#stats{padding:6rem 0;background:var(--navy);position:relative;overflow:hidden}
+#stats::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 75% at 18% 50%,rgba(110,138,160,0.18) 0%,transparent 62%);pointer-events:none}
+.stats-hd{text-align:center;margin-bottom:3.5rem;position:relative;z-index:1}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;z-index:1}
+.scard{background:rgba(255,255,255,0.04);border:1px solid rgba(110,138,160,0.18);border-radius:16px;padding:1.85rem 1.25rem 1.6rem;text-align:center;transition:var(--ease);display:flex;flex-direction:column}
+.scard:hover{background:rgba(110,138,160,0.09);border-color:rgba(110,138,160,0.38)}
+.sico{margin:0 auto 1.1rem;width:46px;height:46px;background:rgba(110,138,160,0.14);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sico svg{width:20px;height:20px;stroke:var(--sl);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sbig{font-family:'DM Serif Display',serif;font-size:2.5rem;color:#f2efea;display:block;line-height:1;margin-bottom:0.9rem}
+.slbl{font-size:0.9rem;color:var(--sl);font-weight:500;display:block;margin-bottom:0.9rem;line-height:1.3;min-height:1.3em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ssub{font-size:0.82rem;color:rgba(242,239,234,0.82);line-height:1.58}
+.ssub strong{color:#f2efea;font-weight:500}
+
+@media(max-width:1100px){
+  .sgrid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .sgrid{grid-template-columns:1fr}
+}
+
+/* TESTIMONIALS */
+#testimonials{padding:7rem 0;background:var(--ow);overflow:hidden}
+.testi-header{margin-bottom:3.5rem}
+.testi-track-wrap{position:relative;overflow:hidden}
+.testi-track{display:flex;gap:1.75rem;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)}
+.tcard{flex:0 0 calc((100% - 1.75rem) / 2);background:white;border:1px solid var(--br);border-radius:20px;overflow:hidden;display:flex;flex-direction:row;min-height:340px}
+.tcard-img{flex:0 0 38%;overflow:hidden;position:relative}
+.tcard-img img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block}
+.tcard-body{padding:1.85rem 1.75rem 1.7rem;display:flex;flex-direction:column;justify-content:space-between;flex:1;min-width:0}
+.badge{display:inline-block;font-size:0.66rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.24rem 0.65rem;border-radius:50px;font-weight:500;margin-bottom:1rem}
+.bp-pt{background:var(--sp);color:var(--sd)}
+.bp-dr{background:#dce3eb;color:#3d5267}
+.qico{display:flex;align-items:flex-start;gap:0.6rem;margin-bottom:1.1rem}
+.qico svg{width:22px;height:22px;flex-shrink:0;margin-top:1px;fill:var(--slate);stroke:none;opacity:0.65}
+.qtxt{font-family:'DM Serif Display',serif;font-size:1rem;line-height:1.65;color:var(--char);font-style:italic}
+.tauth-name{font-size:0.93rem;font-weight:500;color:var(--navy)}
+.tauth-role{font-size:0.76rem;color:var(--tm);letter-spacing:0.04em;text-transform:uppercase;margin-top:0.12rem}
+.testi-controls{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:2rem}
+.tc-btn{width:40px;height:40px;border-radius:50%;background:white;border:1px solid var(--br);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--ease)}
+.tc-btn:hover{border-color:var(--sm);background:var(--sp)}
+.tc-btn:disabled{opacity:0.35;cursor:not-allowed}
+.tc-btn:disabled:hover{border-color:var(--br);background:white}
+.tc-btn svg{width:16px;height:16px;stroke:var(--slate);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tc-dots{display:flex;gap:6px;align-items:center}
+.tc-dot{width:7px;height:7px;border-radius:50%;background:var(--sm);transition:var(--ease);cursor:pointer}
+.tc-dot.active{background:var(--slate);width:20px;border-radius:4px}
+
+@media(max-width:1100px){
+  .tcard{flex:0 0 calc((100% - 1.5rem) / 2)}
+}
+@media(max-width:760px){
+  .tcard{flex:0 0 100%;flex-direction:column;min-height:auto}
+  .tcard-img{flex:0 0 auto;height:240px}
+}
+
+/* TEAM */
+#team{padding:7rem 0;background:var(--ww)}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:3.5rem;align-items:stretch}
+.tmcard{text-align:center;display:flex;flex-direction:column;align-items:center;height:100%}
+.tmav{width:130px;height:130px;border-radius:50%;border:3px solid var(--sm);display:block;margin:0 auto 1.5rem;overflow:hidden;object-fit:cover;object-position:center center;flex-shrink:0}
+.tmname{font-family:'DM Serif Display',serif;font-size:1.24rem;color:var(--navy);font-weight:400;margin-bottom:0.18rem}
+.tmrole{font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);margin-bottom:1.2rem;font-weight:500}
+.tmbio{font-size:0.93rem;color:var(--tm);line-height:1.75;text-align:left;width:100%}
+.tmbio p{margin-bottom:0.65rem}
+.tmtag{display:inline-block;margin-top:auto;padding:0.35rem 0.9rem;background:var(--sp);color:var(--sd);font-size:0.69rem;letter-spacing:0.08em;text-transform:uppercase;border-radius:50px;font-weight:500;align-self:center}
+.tmcard .tmtag{margin-top:auto}
+
+/* RESEARCH */
+#research{padding:7rem 0;background:var(--ow)}
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;margin-top:3rem}
+.pcard{background:white;border:1px solid var(--br);border-radius:12px;padding:1.75rem;transition:var(--ease);position:relative}
+.pcard:hover{border-color:var(--sm);transform:translateY(-2px)}
+.ptype{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate);font-weight:500;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.38rem}
+.ptype svg{width:11px;height:11px;stroke:var(--slate);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ptit{font-size:1rem;color:var(--navy);line-height:1.48;font-weight:500;margin-bottom:0.68rem}
+.pven{font-size:0.86rem;color:var(--tm);font-style:italic}
+.abadge{position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,#f0c040,#e0a820);color:#5a3800;font-size:0.6rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:50px;display:flex;align-items:center;gap:0.28rem}
+.abadge svg{width:9px;height:9px;fill:#5a3800}
+.grow{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.gpill{background:var(--ww);border:1px solid var(--br);border-radius:12px;padding:1.2rem 1.35rem;display:flex;align-items:flex-start;gap:0.9rem;position:relative}
+.gico{flex-shrink:0;margin-top:2px;width:30px;height:30px;background:var(--sp);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.gico svg{width:14px;height:14px;stroke:var(--sd);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gtxt{font-size:0.86rem;color:var(--tm);line-height:1.48;padding-right:4rem}
+.gtxt strong{display:block;color:var(--navy);font-weight:500;margin-bottom:0.12rem;font-size:0.9rem}
+.gbadge{position:absolute;top:0.85rem;right:0.85rem;background:linear-gradient(135deg,#f0c040,#e0a820);color:#5a3800;font-size:0.58rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:50px;display:flex;align-items:center;gap:0.28rem;white-space:nowrap}
+.gbadge svg{width:9px;height:9px;fill:#5a3800}
+
+/* AFFILIATIONS */
+#affiliation{padding:5.5rem 0;background:var(--ww);border-top:1px solid var(--br);text-align:center}
+.affil-label{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tl);margin-bottom:2.5rem}
+.affil-logos{display:grid;grid-template-columns:repeat(4,1fr);align-items:center;justify-items:center;gap:3rem;max-width:1080px;margin:0 auto}
+.affil-logo-box{height:92px;width:100%;display:flex;align-items:center;justify-content:center;opacity:0.85;transition:opacity 0.2s}
+.affil-logo-box:hover{opacity:1}
+.affil-logo-box img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;background:transparent}
+
+/* PRESS / RECOGNITION STRIP */
+#press{background:var(--ww);padding:5.5rem 0 6rem;position:relative;overflow:hidden}
+#press::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1100px,92%);height:1px;background:linear-gradient(90deg,transparent 0%,var(--br) 18%,var(--br) 82%,transparent 100%)}
+.press-head{max-width:720px;margin:0 auto 3rem;text-align:center;padding:0 2.5rem}
+.press-eyebrow{display:inline-block;font-size:0.74rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--slate);font-weight:500;margin-bottom:1rem;position:relative;padding:0 1.6rem}
+.press-eyebrow::before,.press-eyebrow::after{content:"";position:absolute;top:50%;width:24px;height:1px;background:var(--sm)}
+.press-eyebrow::before{right:100%}
+.press-eyebrow::after{left:100%}
+.press-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.22;font-weight:400;color:var(--navy);margin:0}
+.press-title em{font-style:italic;color:var(--slate)}
+.press-grid{max-width:1080px;margin:0 auto;padding:0 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.press-card{background:white;border:1px solid var(--br);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1),box-shadow 0.5s cubic-bezier(0.22,1,0.36,1),border-color 0.35s ease;will-change:transform;transform-style:preserve-3d}
+.press-card:hover{border-color:var(--sm);transform:translateY(-6px);box-shadow:0 32px 70px -35px rgba(40,56,72,0.28), 0 2px 8px -2px rgba(40,56,72,0.08)}
+.press-img{aspect-ratio:16/10;overflow:hidden;background:var(--sp);position:relative}
+.press-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(30,42,56,0.12) 100%);opacity:0;transition:opacity 0.5s ease;pointer-events:none}
+.press-card:hover .press-img::after{opacity:1}
+.press-img img{width:100%;height:100%;object-fit:cover;object-position:center 22%;transition:transform 0.8s cubic-bezier(0.22,1,0.36,1)}
+.press-img--acep img{object-position:center 8%}
+.press-img--puzio img{object-position:center 30%;transform:scale(1.25)}
+.press-card:hover .press-img img{transform:scale(1.06)}
+.press-card:hover .press-img--puzio img{transform:scale(1.32)}
+.press-cardtitle{font-family:'DM Serif Display',serif;font-size:1.25rem;line-height:1.32;color:var(--navy);font-weight:400;margin:0;position:relative;display:inline-block}
+.press-cardtitle::after{content:"";position:absolute;left:0;bottom:-3px;height:1px;background:var(--slate);width:0;transition:width 0.6s cubic-bezier(0.22,1,0.36,1)}
+.press-card:hover .press-cardtitle::after{width:100%}
+.press-cardtitle em{font-style:italic;color:var(--slate)}
+.press-body{padding:1.75rem 1.75rem 1.9rem;display:flex;flex-direction:column;gap:0.75rem;flex:1}
+.press-badge{display:inline-flex;align-items:center;gap:0.55rem;width:fit-content;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sd);background:var(--sp);padding:0.4rem 0.85rem;border-radius:50px;font-weight:500}
+.press-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--slate)}
+.press-meta{font-size:0.82rem;letter-spacing:0.05em;color:var(--tl);font-weight:500;text-transform:uppercase}
+.press-desc{font-size:0.96rem;color:var(--tm);line-height:1.7;margin:0}
+@media(max-width:880px){
+ .press-grid{grid-template-columns:1fr;gap:1.5rem}
+ .press-body{padding:1.5rem 1.4rem 1.6rem}
+}
+
+/* COMPACT DEV-AT STRIP (under hero) */
+#devat{background:var(--ww);padding:2.6rem 0 2.8rem;border-bottom:1px solid var(--br)}
+.devat-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:center;gap:clamp(1.2rem,2.5vw,2.25rem);flex-wrap:wrap}
+.devat-group{display:inline-flex;align-items:center;gap:clamp(1rem,1.6vw,1.5rem)}
+.devat-label{font-size:0.82rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sd);font-weight:500;white-space:nowrap}
+.devat-logos{display:inline-flex;align-items:center;gap:clamp(1.25rem,1.8vw,1.75rem)}
+.devat-logo{display:flex;align-items:center;opacity:0.85;filter:grayscale(0.15);transition:opacity 0.25s, filter 0.25s}
+.devat-logo:hover{opacity:1;filter:grayscale(0)}
+.devat-logo img{width:auto;object-fit:contain;background:transparent;display:block}
+/* Optical-height overrides: match the visible wordmark size across logos */
+.devat-logo--uthem img{height:56px}  /* 3-line stacked UT / McGovern / Emergency Medicine */
+.devat-logo--mh img{height:42px}     /* 2-line MEMORIAL / HERMANN */
+.devat-logo--hh img{height:26px}     /* Single-line HARRISHEALTH wordmark */
+.devat-logo--ioa img{height:48px}    /* 2-line UTHealth / Institute on Aging */
+.devat-sep{width:1px;height:52px;background:var(--br);flex-shrink:0}
+@media(max-width:1180px){
+ .devat-inner{flex-direction:column;gap:1.6rem}
+ .devat-sep{width:72px;height:1px}
+ .devat-group{flex-wrap:wrap;justify-content:center}
+}
+@media(max-width:760px){
+ .devat-logo--uthem img{height:46px}
+ .devat-logo--mh img{height:34px}
+ .devat-logo--hh img{height:22px}
+ .devat-logo--ioa img{height:40px}
+}
+@media(max-width:980px){
+  .affil-logos{grid-template-columns:repeat(2,1fr);gap:2.5rem}
+}
+@media(max-width:760px){
+  .affil-logos{grid-template-columns:1fr;gap:2rem}
+  .affil-logo-box{height:72px}
+}
+
+/* CONTACT */
+#contact{padding:7rem 0;background:var(--navy);position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 58% 68% at 83% 50%,rgba(110,138,160,0.22) 0%,transparent 63%);pointer-events:none}
+.cgrid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start;position:relative;z-index:1}
+.ch{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,2.8rem);color:#f2efea;line-height:1.2;font-weight:400;margin-bottom:1.2rem}
+.ch em{font-style:italic;color:var(--sl)}
+.cb{font-size:0.97rem;color:rgba(242,239,234,0.6);line-height:1.8;margin-bottom:2rem}
+.aud{display:flex;align-items:center;gap:0.85rem;font-size:0.92rem;color:rgba(242,239,234,0.72);margin-bottom:0.65rem}
+.aud::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sl);flex-shrink:0}
+.cform{background:rgba(255,255,255,0.04);border:1px solid rgba(110,138,160,0.18);border-radius:20px;padding:2.4rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1.15rem}
+.fg label{display:block;font-size:0.73rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(242,239,234,0.42);margin-bottom:0.42rem}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,0.055);border:1px solid rgba(110,138,160,0.22);border-radius:10px;padding:0.8rem 1rem;color:rgba(242,239,234,0.9);font-family:'DM Sans',sans-serif;font-size:0.91rem;transition:border-color 0.2s;outline:none;-webkit-appearance:none;appearance:none}
+.fg select option{background:var(--navy)}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(242,239,234,0.26)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--slate)}
+.fg textarea{resize:none;height:94px}
+.fsub{width:100%;background:var(--ww);color:var(--navy);border:none;padding:0.95rem;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:500;letter-spacing:0.04em;cursor:pointer;transition:var(--ease);margin-top:0.45rem}
+.fsub:hover{background:var(--ow);transform:translateY(-1px)}
+.fnote{font-size:0.71rem;color:rgba(242,239,234,0.26);text-align:center;margin-top:0.9rem}
+
+/* FOOTER */
+footer{background:#1e2a38;padding:2.2rem 3rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(110,138,160,0.14);flex-wrap:wrap;gap:1rem}
+.flogo img{height:60px;width:auto;display:block;background:transparent}
+.ftxt{font-size:0.77rem;color:rgba(242,239,234,0.28)}
+.flinks{display:flex;gap:1.4rem;list-style:none}
+.flinks a{font-size:0.77rem;color:rgba(242,239,234,0.28);text-decoration:none;transition:color 0.2s}
+.flinks a:hover{color:var(--sl)}
+
+.reveal{opacity:0;transform:translateY(28px) scale(0.985);transition:opacity 1s cubic-bezier(0.22,1,0.36,1),transform 1s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+.d1{transition-delay:0.08s}.d2{transition-delay:0.16s}.d3{transition-delay:0.24s}
+
+/* Word-by-word headline reveal */
+.word-reveal{display:inline-block}
+h1.word-reveal, h2.word-reveal, h3.word-reveal{display:block}
+.word-reveal .wr-word{display:inline-block;opacity:0;transform:translateY(0.4em);animation:wrIn 0.9s cubic-bezier(0.22,1,0.36,1) forwards}
+@keyframes wrIn{to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+ .word-reveal .wr-word{opacity:1;transform:none;animation:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+ .reveal{opacity:1;transform:none;transition:none}
+ .d1,.d2,.d3{transition-delay:0s}
+}
+
+@media(max-width:900px){
+ nav{padding:0.85rem 1.5rem}.nav-links{display:none}
+ .hgrid{grid-template-columns:1fr;text-align:center;gap:2.5rem}
+ .hvis{display:none}
+ .hb{max-width:100%}.hact{justify-content:center}
+ .chips{grid-template-columns:1fr;margin-top:2.5rem;padding-top:2rem}
+ .chip{text-align:left}
+ .tcol{grid-template-columns:1fr}
+ .tgrid,.grow,.rgrid{grid-template-columns:1fr}
+ .miss-grid{grid-template-columns:1fr;gap:2.5rem}
+ .pcard[style*="span 2"]{grid-column:span 1!important}
+ .cgrid{grid-template-columns:1fr;gap:3rem}.frow{grid-template-columns:1fr}
+ footer{flex-direction:column;align-items:center;text-align:center;padding:2rem 1.5rem}
+ .container{padding:0 1.5rem}
+ .affil-logos{gap:2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+ <a href="#home" class="nav-logo">
+ <img src="images/logo_lockup_a.png" alt="My Health Code">
+ </a>
+ <ul class="nav-links">
+ <li><a href="#home">Home</a></li>
+ <li><a href="#about-app">The App</a></li>
+ <li><a href="#team">Our Team</a></li>
+ <li><a href="#research">Research</a></li>
+ <li><a href="patients.html">For Patients</a></li>
+ <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+ </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+ <div class="hbg"></div>
+ <div class="container">
+ <div class="hgrid">
+ <div>
+ <div class="hey">Developed at UTHealth Houston</div>
+ <h1 class="hh word-reveal" data-wr-stagger="75">Comfort and clarity,<br><em>when it matters most.</em></h1>
+ <p class="hb">My Health Code helps patients communicate what matters most to them - before they're too sick to speak for themselves. We turn medicine's hardest conversation into a clear, confident, and deeply personal choice.</p>
+ <div class="hact">
+ <a href="#about-app" class="bp">See How It Works</a>
+ <a href="#contact" class="bg">Partner With Us</a>
+ </div>
+ <div class="hstat">
+ <span class="hstat-num"><span data-counter data-to="4.95" data-decimals="2" data-duration="1500">0.00</span><sub>/5</sub></span>
+ <div class="hstat-body">
+ <span class="hstat-label">Easier to talk with my doctor</span>
+ <span class="hstat-sub">Patient-reported across 350+ pilot encounters</span>
+ </div>
+ </div>
+ </div>
+ <div class="hvis">
+ <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
+ <div class="ipad" role="button" tabindex="0" onclick="openVideo()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openVideo();}" aria-label="Play My Health Code overview video">
+ <div class="ipad-cam" aria-hidden="true"></div>
+ <div class="ipad-screen">
+ <div class="ipad-logo-wrap">
+ <img src="images/image_02.png" alt="My Health Code">
+ </div>
+ <div class="ipad-play" aria-hidden="true">
+ <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+ </div>
+ <div class="ipad-caption">Watch how it works</div>
+ </div>
+ <div class="ipad-home" aria-hidden="true"></div>
+ </div>
+ </div>
+ </div>
+ <div class="chips">
+ <div class="chip">
+ <div class="chip-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div>
+ <div class="chip-body">
+ <span class="chip-head">Physician-Built</span>
+ <span class="chip-sub">Designed &amp; led by board-certified clinicians</span>
+ </div>
+ </div>
+ <div class="chip">
+ <div class="chip-ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+ <div class="chip-body">
+ <span class="chip-head">Patient-Approved</span>
+ <span class="chip-sub">4.93/5 clarity rating from real patients</span>
+ </div>
+ </div>
+ <div class="chip">
+ <div class="chip-ico"><svg viewBox="0 0 24 24"><path d="M22 10L12 4 2 10l10 6 10-6z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/><path d="M22 10v6"/></svg></div>
+ <div class="chip-body">
+ <span class="chip-head">Academically Developed</span>
+ <span class="chip-sub">Built &amp; validated within UTHealth Houston</span>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- DEVELOPED AT STRIP -->
+<section id="devat">
+ <div class="devat-inner reveal">
+ <div class="devat-group">
+ <span class="devat-label">Developed at</span>
+ <div class="devat-logos">
+ <div class="devat-logo devat-logo--uthem"><img src="images/logo_uthealth_em.png" alt="UTHealth Houston McGovern Medical School - Emergency Medicine"></div>
+ </div>
+ </div>
+ <span class="devat-sep" aria-hidden="true"></span>
+ <div class="devat-group">
+ <span class="devat-label">Validated at</span>
+ <div class="devat-logos">
+ <div class="devat-logo devat-logo--mh"><img src="images/logo_memorial_hermann.png" alt="Memorial Hermann"></div>
+ <div class="devat-logo devat-logo--hh"><img src="images/logo_harris_health.png" alt="Harris Health"></div>
+ </div>
+ </div>
+ <span class="devat-sep" aria-hidden="true"></span>
+ <div class="devat-group">
+ <span class="devat-label">Supported by</span>
+ <div class="devat-logos">
+ <div class="devat-logo devat-logo--ioa"><img src="images/logo_institute_on_aging.png" alt="UTHealth Houston Institute on Aging"></div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- MISSION -->
+<section id="mission">
+ <div class="container">
+ <div class="miss-grid">
+ <div class="reveal">
+ <p class="slabel">Our Mission</p>
+ <h2 class="stitle">Your voice,<br><em style="white-space:nowrap">leading the way.</em></h2>
+ <div class="sdiv"></div>
+ <p class="btext">Too many patients receive care that doesn't reflect their values - not because they didn't have preferences, but because their doctors never asked. My Health Code is changing that.</p>
+ </div>
+ <div class="reveal d1">
+ <p class="miss-q">"The overwhelming majority of Americans say they want to focus on comfort and peace at the end of their lives. Yet millions face aggressive treatments they never wanted - simply because no one asked."</p>
+ <p class="btext">My Health Code bridges the gap between what patients want and what care teams know. By helping individuals identify their values, understand their options, and communicate clearly with their providers, we restore the most fundamental element of good medicine: the patient's own voice.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- PRESS / RECOGNITION -->
+<section id="press">
+ <div class="press-head reveal">
+ <span class="press-eyebrow">Recognition &amp; Reach</span>
+ <h2 class="press-title">Invited. Published. <em>Awarded.</em></h2>
+ </div>
+ <div class="press-grid">
+
+ <div class="press-card reveal d1">
+ <div class="press-img press-img--acep">
+ <img src="images/press_02_acep_2025.jpg" alt="Dr. Shreyans Sanghvi presenting on My Health Code at ACEP 2025" loading="lazy">
+ </div>
+ <div class="press-body">
+ <span class="press-badge"><span class="press-badge-dot"></span>Invited National Talk</span>
+ <h3 class="press-cardtitle">Rethinking Resuscitation: <em>Digital Innovations for Goals of Care in the ED.</em></h3>
+ <p class="press-meta">ACEP 2025 &middot; American College of Emergency Physicians</p>
+ <p class="press-desc">Dr. Shreyans Sanghvi was invited to present nationally on the changing paradigm of Goals of Care discussions in the acute care setting, highlighting how My Health Code is helping pave the way for improved care quality and patient outcomes.</p>
+ </div>
+ </div>
+
+ <div class="press-card reveal d2">
+ <div class="press-img press-img--puzio">
+ <img src="images/press_01_puzio_team.jpg" alt="The MHC team accepting first place at the Geriatric Trauma Symposium" loading="lazy">
+ </div>
+ <div class="press-body">
+ <span class="press-badge"><span class="press-badge-dot"></span>1st Place &middot; Peer-Reviewed</span>
+ <h3 class="press-cardtitle">Acceptability of a Video-Based Tool for Code Status Discussions in <em>Older Adults After Trauma.</em></h3>
+ <p class="press-meta">Geriatric Trauma Symposium &middot; Dr. Thaddeus Puzio</p>
+ <p class="press-desc">MHC's video-based conversation aid was judged first place out of a field of peer research posters, recognized for acceptability and effectiveness in improving CPR understanding for older trauma patients and their surrogates.</p>
+ </div>
+ </div>
+
+ </div>
+</section>
+
+<!-- THE APP -->
+<section id="about-app">
+ <div class="container">
+ <div class="reveal">
+ <p class="slabel">The Application</p>
+ <h2 class="stitle">Turning uncertainty into <em>confident choices.</em></h2>
+ <div class="sdiv"></div>
+ </div>
+ <div class="tcol">
+ <div class="fcard reveal d1">
+ <span class="fstep">01</span>
+ <div class="fico"><svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+ <h3 class="ftit">Understand Your Options</h3>
+ <p class="fdesc">My Health Code translates complex medical decisions into plain language, using short videos and clear visuals - so every option is easy to grasp, regardless of medical background.</p>
+ </div>
+ <div class="fcard reveal d2">
+ <span class="fstep">02</span>
+ <div class="fico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+ <h3 class="ftit">Discover Your Values</h3>
+ <p class="fdesc">Guided questions help you explore what quality of life means to you - your priorities, your fears, and what you would and wouldn't want from your care.</p>
+ </div>
+ <div class="fcard reveal d3">
+ <span class="fstep">03</span>
+ <div class="fico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+ <h3 class="ftit">Communicate With Confidence</h3>
+ <p class="fdesc">Generate a clear summary of your preferences that travels with your care - so your voice leads every conversation, even when you can't speak for yourself.</p>
+ </div>
+ <div class="fcard reveal d3">
+ <span class="fstep">04</span>
+ <div class="fico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></div>
+ <h3 class="ftit">Put Your Choices in Writing</h3>
+ <p class="fdesc">Turn your decisions into an Advance Care Directive - the legal document that records your medical wishes - so any care team, anywhere, is required to honor them if you cannot speak for yourself.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+ <div class="container">
+ <div class="stats-hd reveal">
+ <p class="slabel" style="color:var(--sl)">Patient Outcomes</p>
+ <h2 class="stitle" style="color:#f2efea">The proof is in the <em style="color:var(--sl)">people.</em></h2>
+ </div>
+ <div class="sgrid">
+ <div class="scard reveal d1">
+ <div class="sico"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+ <span class="sbig"><span data-counter data-to="4.93" data-decimals="2" data-duration="1400">0.00</span> / 5</span>
+ <span class="slbl">Clarity of Information</span>
+ <span class="ssub">Patients found the material <strong>clear and easy to understand</strong>, with or without a medical background.</span>
+ </div>
+ <div class="scard reveal d2">
+ <div class="sico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+ <span class="sbig"><span data-counter data-to="4.87" data-decimals="2" data-duration="1500">0.00</span> / 5</span>
+ <span class="slbl">Easier to Talk with Doctors</span>
+ <span class="ssub">Patients reported it helped them <strong>start and sustain</strong> hard conversations about their care.</span>
+ </div>
+ <div class="scard reveal d2">
+ <div class="sico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+ <span class="sbig"><span data-counter data-to="4.8" data-decimals="1" data-duration="1600">0.0</span> / 5</span>
+ <span class="slbl">Felt Heard &amp; Included</span>
+ <span class="ssub">Patients said the tool helped them feel <strong>meaningfully included</strong> in their own care decisions.</span>
+ </div>
+ <div class="scard reveal d3">
+ <div class="sico"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+ <span class="sbig"><span data-counter data-to="95.5" data-decimals="1" data-duration="1700">0.0</span></span>
+ <span class="slbl">Net Promoter Score</span>
+ <span class="ssub"><strong>Scores above 70 are considered exceptional.</strong> At 95.5, nearly every patient would recommend MHC to someone they love.</span>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+ <div class="container">
+ <div class="testi-header reveal">
+ <p class="slabel">Voices From the Bedside</p>
+ <h2 class="stitle">What patients &amp; physicians <em>are saying.</em></h2>
+ <div class="sdiv"></div>
+ </div>
+ <div class="testi-track-wrap">
+ <div class="testi-track" id="testiTrack">
+ <div class="tcard">
+ <div class="tcard-img"><img src="images/testi_01_patient.jpg" alt="Patient in hospital bed"></div>
+ <div class="tcard-body">
+ <div>
+ <span class="badge bp-pt">Patient</span>
+ <div class="qico">
+ <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z"/></svg>
+ <p class="qtxt">It had clarity - easy to understand information. It helped me understand what could happen, and not let that decision be taken by someone else, but make it beforehand while I was mentally able to. It met the need I had in that moment.</p>
+ </div>
+ </div>
+ <div><p class="tauth-name">Patient &middot; J.M.</p><p class="tauth-role">MHC Pilot Study &middot; Memorial Hermann</p></div>
+ </div>
+ </div>
+ <div class="tcard">
+ <div class="tcard-img"><img src="images/testi_02_physician.jpg" alt="Physician reviewing chart"></div>
+ <div class="tcard-body">
+ <div>
+ <span class="badge bp-dr">Physician</span>
+ <div class="qico">
+ <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z"/></svg>
+ <p class="qtxt">It's made it significantly more structured, and because it's more structured, I have a reliable, easy method to explore this topic. This feels like a standard of care approach - and even patients feel like it's just a natural part of their treatment.</p>
+ </div>
+ </div>
+ <div><p class="tauth-name">Emergency Medicine Physician</p><p class="tauth-role">MHC Pilot Study &middot; Memorial Hermann</p></div>
+ </div>
+ </div>
+ <div class="tcard">
+ <div class="tcard-img"><img src="images/testi_03_patient.jpg" alt="Patient in hospital bed"></div>
+ <div class="tcard-body">
+ <div>
+ <span class="badge bp-pt">Patient</span>
+ <div class="qico">
+ <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z"/></svg>
+ <p class="qtxt">It took one more responsibility off my plate - it's already been decided, it's been documented, we can move forward. And it made me feel like y'all really cared. You respected the fact that I knew what I was choosing.</p>
+ </div>
+ </div>
+ <div><p class="tauth-name">Patient &middot; R.K.</p><p class="tauth-role">MHC Pilot Study &middot; Harris Health</p></div>
+ </div>
+ </div>
+ <div class="tcard">
+ <div class="tcard-img"><img src="images/image_06.jpg" alt="Physician"></div>
+ <div class="tcard-body">
+ <div>
+ <span class="badge bp-dr">Physician</span>
+ <div class="qico">
+ <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z"/></svg>
+ <p class="qtxt">It clarifies what patients really want out of their life - their meaning, how they want to be cared for. Because it changes how we treat them. They told me nobody had ever talked to them about this before, and they were very plugged-in patients.</p>
+ </div>
+ </div>
+ <div><p class="tauth-name">Critical Care Physician</p><p class="tauth-role">MHC Pilot Study &middot; Harris Health</p></div>
+ </div>
+ </div>
+ <!-- ============ NEW TESTIMONIALS ============ -->
+ <div class="tcard">
+ <div class="tcard-img"><img src="images/testi_05_physician.jpg" alt="Physician"></div>
+ <div class="tcard-body">
+ <div>
+ <span class="badge bp-dr">Physician</span>
+ <div class="qico">
+ <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z"/></svg>
+ <p class="qtxt">For patients who have serious illness, this is so important. The last thing we want is to put somebody through a rigorous resuscitation they wouldn't want - and this helps us know what they would want going forward.</p>
+ </div>
+ </div>
+ <div><p class="tauth-name">Emergency Medicine Physician</p><p class="tauth-role">MHC Pilot Study &middot; Memorial Hermann</p></div>
+ </div>
+ </div>
+ <div class="tcard">
+ <div class="tcard-img"><img src="images/image_04.jpg" alt="Physician"></div>
+ <div class="tcard-body">
+ <div>
+ <span class="badge bp-dr">Physician</span>
+ <div class="qico">
+ <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z"/></svg>
+ <p class="qtxt">They said nobody had ever talked to them about this before - and they weren't patients who were lost to the healthcare system. They were very plugged-in patients.</p>
+ </div>
+ </div>
+ <div><p class="tauth-name">Emergency Medicine Physician</p><p class="tauth-role">MHC Pilot Study &middot; Harris Health</p></div>
+ </div>
+ </div>
+ <div class="tcard">
+ <div class="tcard-img"><img src="images/testi_07_caregiver.jpg" alt="Patient with family caregiver"></div>
+ <div class="tcard-body">
+ <div>
+ <span class="badge bp-pt">Caregiver</span>
+ <div class="qico">
+ <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z"/></svg>
+ <p class="qtxt">It was extremely informative - elementary-level informative. Anyone could understand it.</p>
+ </div>
+ </div>
+ <div><p class="tauth-name">Caregiver &middot; D.T.</p><p class="tauth-role">MHC Pilot Study &middot; Memorial Hermann</p></div>
+ </div>
+ </div>
+ <div class="tcard">
+ <div class="tcard-img"><img src="images/testi_08_physician.jpg" alt="Physician"></div>
+ <div class="tcard-body">
+ <div>
+ <span class="badge bp-dr">Physician</span>
+ <div class="qico">
+ <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z"/></svg>
+ <p class="qtxt">It's able to clarify the patient's goals - what they want out of their life, their meaning, how they want to be cared for.</p>
+ </div>
+ </div>
+ <div><p class="tauth-name">Emergency Medicine Physician</p><p class="tauth-role">MHC Pilot Study &middot; Memorial Hermann</p></div>
+ </div>
+ </div>
+ <div class="tcard">
+ <div class="tcard-img"><img src="images/testi_09_caregiver.jpg" alt="Patient with family caregiver at home"></div>
+ <div class="tcard-body">
+ <div>
+ <span class="badge bp-pt">Caregiver</span>
+ <div class="qico">
+ <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z"/></svg>
+ <p class="qtxt">In the moment, she was unconscious. But this cleared up all the doubts you may have. I think that's very important.</p>
+ </div>
+ </div>
+ <div><p class="tauth-name">Caregiver &middot; L.A.</p><p class="tauth-role">MHC Pilot Study &middot; Harris Health</p></div>
+ </div>
+ </div>
+ <!-- ============ END NEW TESTIMONIALS ============ -->
+ </div>
+ </div>
+ <div class="testi-controls">
+ <button class="tc-btn" id="tcPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg></button>
+ <div class="tc-dots" id="tcDots"></div>
+ <button class="tc-btn" id="tcNext" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg></button>
+ </div>
+ </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+ <div class="container">
+ <div class="reveal">
+ <p class="slabel">The Team</p>
+ <h2 class="stitle">Built by doctors, <em>for patients.</em></h2>
+ <div class="sdiv"></div>
+ </div>
+ <div class="tgrid">
+ <div class="tmcard reveal d1">
+ <img class="tmav" src="images/07_tmav.jpg" alt="Shreyans Sanghvi, DO">
+ <p class="tmname">Shreyans Sanghvi, DO</p>
+ <p class="tmrole">Founder &middot; Emergency Medicine</p>
+ <div class="tmbio">
+ <p>Inspired by the contrasting end-of-life journeys of his own grandparents, Dr. Sanghvi places patients' values at the center of care across emergency medicine, critical care, and palliative practice.</p>
+ <p>His work has been presented nationally, published in peer-reviewed journals, and supported by UTHealth Houston institutional grants.</p>
+ </div>
+ <span class="tmtag">Founder</span>
+ </div>
+ <div class="tmcard reveal d2">
+ <img class="tmav" src="images/08_tmav.jpg" alt="Caroline Ha, MD">
+ <p class="tmname">Caroline Ha, MD</p>
+ <p class="tmrole">Co-Founder &middot; Palliative Care</p>
+ <div class="tmbio">
+ <p>Dr. Ha brings decades of experience as a palliative care physician and fellowship director, having guided countless patients and families through medicine's most difficult conversations.</p>
+ <p>Her clinical expertise shapes every aspect of My Health Code, ensuring the application is compassionate, rigorous, and genuinely useful at the bedside.</p>
+ </div>
+ <span class="tmtag">Co-Founder</span>
+ </div>
+ <div class="tmcard reveal d3">
+ <img class="tmav" src="images/09_tmav.jpg" alt="Thaddeus Puzio, MD">
+ <p class="tmname">Thaddeus Puzio, MD</p>
+ <p class="tmrole">Co-Founder &middot; Surgery &amp; Critical Care</p>
+ <div class="tmbio">
+ <p>Dr. Puzio leads My Health Code's rigorous research program through randomized controlled trials, supported by multiple institutional innovation grants.</p>
+ <p>As Director of the Surgical Trauma ICU at Memorial Hermann, he applies MHC daily at the bedside - bridging evidence-based research with real-world critical care.</p>
+ </div>
+ <span class="tmtag">Co-Founder</span>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+ <div class="container">
+ <div class="reveal">
+ <p class="slabel">Research &amp; Publications</p>
+ <h2 class="stitle">Evidence-based.<br><em>Rigorously tested.</em></h2>
+ <div class="sdiv"></div>
+ <p class="btext" style="max-width:580px">My Health Code is grounded in peer-reviewed research and validated through randomized controlled trials, with findings presented at the nation's leading clinical and academic forums.</p>
+ </div>
+ <div class="rgrid">
+ <div class="pcard reveal d1">
+ <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Conference &amp; Journal</p>
+ <p class="ptit">When Decisions Matter Most: Changing the Paradigm of Goals-of-Care Discussions for Seriously Ill Patients in Acute Care</p>
+ <p class="pven">MD Anderson Oncologic EM Conference, Feb 2026 &middot; Accepted, Journal of Emergency Medicine 2026</p>
+ </div>
+ <div class="pcard reveal d2">
+ <div class="abadge"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9.2,11 6,9.3 2.8,11 3.5,7.5 1,5 4.5,4.5"/></svg>1st Place</div>
+ <p class="ptype"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Symposium Award</p>
+ <p class="ptit">Acceptability of a Video-Based Tool for Code Status Discussions in Older Adults and their Surrogates After Trauma</p>
+ <p class="pven">UTHealth Geriatric Trauma Symposium, Feb 2026</p>
+ </div>
+ <div class="pcard reveal d1">
+ <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Peer-Reviewed Journal</p>
+ <p class="ptit">Knowledge of CPR and Code Status Discussions in Injured Older Adults: Does Health Literacy Matter?</p>
+ <p class="pven">Journal of Applied Gerontology, 2023</p>
+ </div>
+ <div class="pcard reveal d2">
+ <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Journal &amp; National Conference</p>
+ <p class="ptit">Rethinking Resuscitation: Insights on End-of-Life Care Practices in High Mortality Risk Patients</p>
+ <p class="pven">Annals of Emergency Medicine 2025 &middot; ACEP Research Forum 2025</p>
+ </div>
+ <div class="pcard reveal d1" style="grid-column:span 2">
+ <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Published - Journal of Emergency Medicine</p>
+ <p class="ptit">Decoding Code Status: Assessing End-of-Life Care Knowledge in High-Risk Emergency Department Populations</p>
+ <p class="pven">Journal of Emergency Medicine 2025 &middot; MD Anderson Oncologic EM Conference, Feb 2025</p>
+ </div>
+ </div>
+ <div class="grow">
+ <div class="gpill reveal d1">
+ <div class="gico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+ <div class="gtxt"><strong>Memorial Hermann Innovation Award</strong>Department of Emergency Medicine, 2024</div>
+ </div>
+ <div class="gpill reveal d2">
+ <div class="gbadge"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9.2,11 6,9.3 2.8,11 3.5,7.5 1,5 4.5,4.5"/></svg>1st Place</div>
+ <div class="gico"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div>
+ <div class="gtxt"><strong>UTHealth Retirement Organization Grant</strong>Awarded September 2025</div>
+ </div>
+ <div class="gpill reveal d3">
+ <div class="gbadge"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9.2,11 6,9.3 2.8,11 3.5,7.5 1,5 4.5,4.5"/></svg>1st Place</div>
+ <div class="gico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+ <div class="gtxt"><strong>UTHealth Institute on Aging Grant</strong>Awarded February 2026</div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- AFFILIATIONS -->
+<section id="affiliation">
+ <div class="container">
+ <p class="affil-label">Institutional Affiliations &amp; Partners</p>
+ <div class="affil-logos">
+ <div class="affil-logo-box">
+ <img src="images/logo_uthealth_em.png" alt="UTHealth Houston McGovern Medical School - Emergency Medicine">
+ </div>
+ <div class="affil-logo-box">
+ <img src="images/logo_memorial_hermann.png" alt="Memorial Hermann">
+ </div>
+ <div class="affil-logo-box">
+ <img src="images/logo_harris_health.png" alt="Harris Health">
+ </div>
+ <div class="affil-logo-box">
+ <img src="images/logo_institute_on_aging.png" alt="UTHealth Houston Institute on Aging">
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+ <div class="container">
+ <div class="cgrid">
+ <div>
+ <p class="slabel" style="color:var(--sl)">Get In Touch</p>
+ <h2 class="ch">Let's build<br><em>better care</em><br>together.</h2>
+ <p class="cb">Whether you're a clinician, researcher, health system, investor, or patient advocate - we want to hear from you. My Health Code is growing, and we're looking for partners who share our vision.</p>
+ <div class="aud">Health systems &amp; hospitals</div>
+ <div class="aud">Clinicians &amp; care teams</div>
+ <div class="aud">Research collaborators</div>
+ <div class="aud">Investors &amp; strategic partners</div>
+ <div class="aud">Press &amp; media</div>
+ </div>
+<!--
+  CONTACT FORM SETUP:
+  This form sends to Formspree (https://formspree.io/f/xeevlogv).
+
+  STATUS: Active. Submissions forward to the email set in Formspree's dashboard.
+
+  TO CHANGE THE DESTINATION EMAIL:
+  1. Log in at https://formspree.io/
+  2. Open the form and update the notification email
+  3. (Optional) Turn on reCAPTCHA + auto-reply confirmation from form settings
+
+  Free plan: 50 submissions/month. Paid plans start at $10/mo.
+  Alternative: Netlify Forms (if hosting on Netlify) or a Google Apps Script webhook.
+-->
+ <form class="cform reveal d1" action="https://formspree.io/f/xeevlogv" method="POST">
+ <div class="frow">
+ <div class="fg"><label>First Name</label><input type="text" name="first_name" required placeholder="Jane"></div>
+ <div class="fg"><label>Last Name</label><input type="text" name="last_name" required placeholder="Smith"></div>
+ </div>
+ <div class="fg"><label>Email</label><input type="email" name="email" required placeholder="jane@example.com"></div>
+ <div class="fg"><label>Organization</label><input type="text" name="organization" placeholder="Institution or company"></div>
+ <div class="fg">
+ <label>I am a...</label>
+ <select name="role" required>
+ <option value="">Select one</option>
+ <option>Clinician / Care Team Member</option>
+ <option>Hospital / Health System</option>
+ <option>Researcher / Academic</option>
+ <option>Investor / Funder</option>
+ <option>Patient / Patient Advocate</option>
+ <option>Press / Media</option>
+ <option>Other</option>
+ </select>
+ </div>
+ <div class="fg"><label>Message</label><textarea name="message" required placeholder="Tell us what brings you here..."></textarea></div>
+ <!-- Formspree: subject line that appears in your inbox -->
+ <input type="hidden" name="_subject" value="New My Health Code contact form submission">
+ <!-- Formspree: honeypot anti-spam field; bots fill this, humans don't see it -->
+ <input type="text" name="_gotcha" style="display:none">
+ <button type="submit" class="fsub">Send Message &rarr;</button>
+ <p class="fnote">We typically respond within 2 business days.</p>
+ </form>
+ </div>
+ </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+ <a href="#home" class="flogo">
+ <img src="images/logo_lockup_b.png" alt="My Health Code">
+ </a>
+ <p class="ftxt">&copy; 2025 My Health Code &middot; Developed at UTHealth Houston</p>
+ <ul class="flinks">
+ <li><a href="#about-app">The App</a></li>
+ <li><a href="#team">Team</a></li>
+ <li><a href="#research">Research</a></li>
+ <li><a href="#contact">Contact</a></li>
+ </ul>
+</footer>
+
+<script>
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+const obs = new IntersectionObserver(entries => entries.forEach(e => {
+ if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+}), {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* WORD-BY-WORD HEADLINE REVEAL */
+(function(){
+ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if (reduced) return;
+ document.querySelectorAll('.word-reveal').forEach(el => {
+  const frag = document.createDocumentFragment();
+  const parts = el.innerHTML.split(/(<[^>]+>|\s+)/).filter(Boolean);
+  let wordIdx = 0;
+  const baseDelay = parseInt(el.dataset.wrDelay || '0', 10);
+  const stagger = parseInt(el.dataset.wrStagger || '90', 10);
+  parts.forEach(part => {
+   if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+   if (/^</.test(part)) { const tmp = document.createElement('template'); tmp.innerHTML = part; frag.appendChild(tmp.content.cloneNode(true) || document.createTextNode(part)); return; }
+   // Real word or punctuation chunk — wrap in span with delay
+   const span = document.createElement('span');
+   span.className = 'wr-word';
+   span.textContent = part;
+   span.style.animationDelay = (baseDelay + stagger * wordIdx) + 'ms';
+   wordIdx++;
+   frag.appendChild(span);
+  });
+  el.innerHTML = '';
+  el.appendChild(frag);
+ });
+})();
+
+/* STAT COUNTER ANIMATION */
+(function(){
+ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const ease = t => 1 - Math.pow(1 - t, 4); // easeOutQuart
+ function animateNum(el, to, decimals, duration){
+  if (reduced) { el.textContent = to.toFixed(decimals); return; }
+  const start = performance.now();
+  const step = (now) => {
+   const t = Math.min(1, (now - start) / duration);
+   const v = to * ease(t);
+   el.textContent = v.toFixed(decimals);
+   if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+ }
+ const statObs = new IntersectionObserver(entries => entries.forEach(e => {
+  if (!e.isIntersecting) return;
+  const el = e.target;
+  const to = parseFloat(el.dataset.to);
+  const decimals = parseInt(el.dataset.decimals || '0', 10);
+  const duration = parseInt(el.dataset.duration || '1400', 10);
+  animateNum(el, to, decimals, duration);
+  statObs.unobserve(el);
+ }), {threshold: 0.4});
+ document.querySelectorAll('[data-counter]').forEach(el => statObs.observe(el));
+})();
+
+const track = document.getElementById('testiTrack');
+const dotsEl = document.getElementById('tcDots');
+const prevBtn = document.getElementById('tcPrev');
+const nextBtn = document.getElementById('tcNext');
+const cards = Array.from(track.querySelectorAll('.tcard'));
+const total = cards.length;
+let cur = 0;
+const GAP = 28; // matches CSS gap: 1.75rem
+const pv = () => {
+ const w = window.innerWidth;
+ if (w < 760) return 1;
+ return 2;
+};
+function updateButtons() {
+ prevBtn.disabled = cur <= 0;
+ nextBtn.disabled = cur >= total - pv();
+}
+function buildDots() {
+ dotsEl.innerHTML = '';
+ const pages = Math.ceil(total / pv());
+ for (let i=0;i<pages;i++) {
+ const d = document.createElement('div');
+ d.className='tc-dot'+(i===Math.floor(cur/pv())?' active':'');
+ d.onclick=()=>goTo(i*pv());
+ dotsEl.appendChild(d);
+ }
+}
+function goTo(idx) {
+ cur = Math.max(0, Math.min(idx, total - pv()));
+ const w = cards[0].offsetWidth + GAP;
+ track.style.transform = `translateX(-${cur*w}px)`;
+ buildDots();
+ updateButtons();
+}
+prevBtn.onclick = () => goTo(cur-pv());
+nextBtn.onclick = () => goTo(cur+pv());
+window.addEventListener('resize', () => goTo(0));
+buildDots();
+updateButtons();
+// Auto-rotate removed - user-controlled only per design preference.
+
+/* ===== VIDEO MODAL ===== */
+const VIMEO_URL = 'https://vimeo.com/1184283087';
+
+function toVimeoEmbed(url){
+  if(!url) return '';
+  // already an embed URL
+  if(url.includes('player.vimeo.com')) return url.includes('autoplay')?url:url+(url.includes('?')?'&':'?')+'autoplay=1';
+  // extract numeric ID from a regular vimeo.com URL
+  const m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if(m) return 'https://player.vimeo.com/video/'+m[1]+'?autoplay=1';
+  return url;
+}
+
+function openVideo(){
+  const modal = document.getElementById('vmodal');
+  const frame = document.getElementById('vframe');
+  const embed = toVimeoEmbed(VIMEO_URL);
+  if(!embed){
+    alert('Video coming soon. Please check back shortly.');
+    return;
+  }
+  frame.src = embed;
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeVideo(){
+  const modal = document.getElementById('vmodal');
+  const frame = document.getElementById('vframe');
+  frame.src = '';
+  modal.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeVideo(); });
+</script>
+<!-- Video modal -->
+<div class="vmodal" id="vmodal" onclick="if(event.target===this)closeVideo()" role="dialog" aria-modal="true" aria-label="Product video">
+  <div class="vmodal-inner">
+    <button class="vmodal-close" onclick="closeVideo()" aria-label="Close video">&times;</button>
+    <iframe id="vframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="My Health Code overview video"></iframe>
+  </div>
+</div>
+</body>
+</html>
