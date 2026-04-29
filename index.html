@@ -44,8 +44,8 @@ html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--ww);color:var(--tp);line-height:1.7;overflow-x:hidden}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(30,42,56,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(110,138,160,0.2);transition:var(--ease)}
-nav.scrolled{padding:0.6rem 3rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:transparent;backdrop-filter:none;border-bottom:1px solid transparent;transition:var(--ease)}
+nav.scrolled{padding:0.6rem 3rem;background:rgba(30,42,56,0.92);backdrop-filter:blur(16px);border-bottom-color:rgba(110,138,160,0.2)}
 .nav-logo img{height:38px;width:auto;display:block;background:transparent}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:rgba(242,239,234,0.65);text-decoration:none;transition:color 0.2s}
@@ -63,14 +63,22 @@ section{scroll-margin-top:80px}
 
 /* HERO */
 #home{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;background:var(--navy);padding:8rem 0 5rem}
-.hbg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 68% 40%,rgba(110,138,160,0.32) 0%,transparent 68%),radial-gradient(ellipse 45% 70% at 8% 75%,rgba(110,138,160,0.14) 0%,transparent 60%);pointer-events:none}
-.hgrid{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:3rem;position:relative;z-index:1}
+/* Aurora wash: multiple soft color fields blending behind the hero */
+.hbg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hbg::before,.hbg::after,.hbg-a,.hbg-b,.hbg-c{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.hbg::before{content:'';width:780px;height:780px;top:-180px;left:-160px;background:radial-gradient(circle,rgba(168,193,213,0.85) 0%,transparent 65%);opacity:0.55}
+.hbg::after{content:'';width:920px;height:920px;bottom:-260px;right:-180px;background:radial-gradient(circle,rgba(232,184,154,0.7) 0%,transparent 65%);opacity:0.42}
+.hbg-a{width:560px;height:560px;top:18%;right:8%;background:radial-gradient(circle,rgba(110,138,160,0.7) 0%,transparent 65%);opacity:0.4}
+.hbg-b{width:440px;height:440px;top:55%;left:14%;background:radial-gradient(circle,rgba(156,188,194,0.85) 0%,transparent 65%);opacity:0.42}
+.hbg-c{width:520px;height:520px;top:30%;left:48%;background:radial-gradient(circle,rgba(186,158,200,0.55) 0%,transparent 65%);opacity:0.32}
+.hgrid{display:grid;grid-template-columns:1.08fr 1.15fr;align-items:center;gap:3rem;position:relative;z-index:1}
 .hey{font-size:0.73rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sl);margin-bottom:1.4rem;display:flex;align-items:center;gap:0.7rem}
 .hey::before{content:'';width:26px;height:1px;background:var(--sl)}
-.hh{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.6vw,2.95rem);line-height:1.15;color:#f2efea;margin-bottom:1.7rem;font-weight:400;text-wrap:balance;max-width:none}
+.hh{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.2vw,2.7rem);line-height:1.16;color:#f2efea;margin-bottom:1.7rem;font-weight:400;text-wrap:balance;max-width:none;letter-spacing:-0.01em}
 .hh em{font-style:italic;color:var(--sl)}
 .hb{font-size:1.02rem;color:rgba(242,239,234,0.68);line-height:1.82;margin-bottom:2.4rem;max-width:460px}
-.hact{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.hact{display:flex;gap:0.85rem;flex-wrap:nowrap;margin-bottom:2.5rem;align-items:center}
+.hact .bp,.hact .bg{white-space:nowrap}
 .hstat{display:inline-flex;align-items:center;gap:1.2rem;padding:1rem 1.4rem 1rem 1.2rem;border:1px solid rgba(110,138,160,0.28);border-left:3px solid var(--sl);border-radius:0 14px 14px 0;background:rgba(110,138,160,0.06);backdrop-filter:blur(6px);max-width:460px;transition:var(--ease)}
 .hstat:hover{background:rgba(110,138,160,0.1);border-color:rgba(110,138,160,0.42)}
 .hstat-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:2.15rem;line-height:1;color:#f2efea;font-weight:400;letter-spacing:-0.01em;white-space:nowrap;display:inline-flex;align-items:baseline}
@@ -89,30 +97,31 @@ section{scroll-margin-top:80px}
 .chip-ico svg{width:22px;height:22px;stroke:var(--sl);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .chip-body{display:flex;flex-direction:column;min-width:0;flex:1}
 .chip-head{font-family:'DM Serif Display',serif;font-size:1.15rem;color:#f2efea;display:block;line-height:1.2;margin-bottom:0.28rem}
-.chip-sub{font-size:0.74rem;letter-spacing:0.04em;text-transform:uppercase;color:rgba(242,239,234,0.5);display:block;line-height:1.45}
+.chip-sub{font-size:0.74rem;letter-spacing:0.04em;text-transform:uppercase;color:rgba(242,239,234,0.5);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.45}
 
-/* IPAD */
-.hvis{display:flex;justify-content:center;align-items:center;position:relative}
-.ring{position:absolute;border-radius:50%;border:1px solid rgba(110,138,160,0.1);animation:pr 5s ease-in-out infinite}
-.r1{width:420px;height:420px}.r2{width:540px;height:540px;animation-delay:1.2s;opacity:0.55}.r3{width:660px;height:660px;animation-delay:2.4s;opacity:0.28}
-@keyframes pr{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+/* IPAD (shared device frame for hero + how-it-works) */
+.hvis{display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;gap:1.4rem}
 @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-.ipad{width:520px;height:375px;background:linear-gradient(160deg,#2a2a2a,#161616);border-radius:26px;border:2px solid rgba(255,255,255,0.09);padding:18px 40px 18px 40px;position:relative;z-index:2;box-shadow:0 36px 90px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.08);animation:fl 6s ease-in-out infinite}
-/* Camera on LEFT short edge (landscape, home on right) - vertically centered */
-.ipad-cam{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.18);box-shadow:inset 0 0 2px rgba(0,0,0,0.8)}
-/* Home button on RIGHT short edge - circular, vertically centered */
-.ipad-home{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.03)}
-.ipad-screen{width:100%;height:100%;background:linear-gradient(160deg,#1a2632,#141f2a);border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer}
-.ipad-screen::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 45%,rgba(110,138,160,0.28) 0%,transparent 70%);pointer-events:none}
-.ipad-screen::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(110,138,160,0.4),transparent);pointer-events:none}
-.ipad-logo-wrap{position:relative;z-index:1;padding:0 32px;transition:opacity 0.3s ease}
-.ipad-logo-wrap img{width:340px;max-width:100%;object-fit:contain;background:transparent}
-.ipad-screen:hover .ipad-logo-wrap{opacity:0.35}
-.ipad-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;z-index:3;opacity:0;transition:opacity 0.3s ease,transform 0.3s ease;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
-.ipad-screen:hover .ipad-play{opacity:1;transform:translate(-50%,-50%) scale(1.05)}
-.ipad-play svg{width:26px;height:26px;fill:var(--navy);margin-left:4px}
-.ipad-caption{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,239,234,0.55);z-index:3;opacity:0;transition:opacity 0.3s ease;white-space:nowrap;pointer-events:none}
-.ipad-screen:hover .ipad-caption{opacity:1}
+.ipad{width:660px;height:460px;background:linear-gradient(160deg,#2a2a2a,#161616);border-radius:30px;border:2px solid rgba(255,255,255,0.09);padding:22px 46px 22px 46px;position:relative;z-index:2;box-shadow:0 40px 100px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.08);animation:fl 6s ease-in-out infinite}
+.ipad-cam{position:absolute;left:20px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.18);box-shadow:inset 0 0 2px rgba(0,0,0,0.8)}
+.ipad-home{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.03)}
+.ipad-screen{width:100%;height:100%;background:#f2efea;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+
+/* HERO IPAD: simple title card scene */
+.flow-stage{position:relative;z-index:1;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 2.4rem;background:#f2efea}
+.flow-intro-logo{width:auto;height:74px;max-width:78%;object-fit:contain;display:block;opacity:0;transform:translateY(10px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.flow-stage.intro-played .flow-intro-logo{opacity:1;transform:translateY(0)}
+.flow-intro-sub{font-family:'DM Serif Display',serif;font-size:1.18rem;letter-spacing:0;text-transform:none;color:#44576a;margin:1.4rem 0 0;text-align:center;font-weight:400;font-style:italic;max-width:30ch;line-height:1.45;opacity:0;transform:translateY(12px);transition:opacity 0.65s cubic-bezier(0.22,1,0.36,1) 0.45s, transform 0.65s cubic-bezier(0.22,1,0.36,1) 0.45s}
+.flow-stage.intro-played .flow-intro-sub{opacity:1;transform:translateY(0)}
+.flow-intro-divider{width:36px;height:2px;background:#6e8aa0;margin:1.2rem 0 0;border-radius:2px;opacity:0;transform:scaleX(0);transform-origin:center;transition:opacity 0.6s ease 0.7s, transform 0.6s ease 0.7s}
+.flow-stage.intro-played .flow-intro-divider{opacity:1;transform:scaleX(1)}
+
+.ipad-caption{position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,239,234,0.55);z-index:3;white-space:nowrap;pointer-events:none}
+/* Watch video CTA below the hero iPad */
+.ipad-cta{margin-top:0.5rem;background:transparent;border:1px solid rgba(242,239,234,0.22);color:rgba(242,239,234,0.85);padding:0.6rem 1.15rem;border-radius:999px;font-family:'DM Sans',sans-serif;font-size:0.83rem;letter-spacing:0.04em;display:inline-flex;align-items:center;gap:0.55rem;cursor:pointer;transition:var(--ease)}
+.ipad-cta:hover{background:rgba(242,239,234,0.08);border-color:rgba(242,239,234,0.4);color:#f2efea}
+.ipad-cta-ico{width:18px;height:18px;border-radius:50%;background:rgba(242,239,234,0.92);display:flex;align-items:center;justify-content:center}
+.ipad-cta-ico svg{width:9px;height:9px;fill:var(--navy);margin-left:1px}
 /* Video modal */
 .vmodal{position:fixed;inset:0;background:rgba(0,0,0,0.88);display:none;align-items:center;justify-content:center;z-index:200;padding:2rem}
 .vmodal.open{display:flex}
@@ -127,19 +136,188 @@ section{scroll-margin-top:80px}
 .miss-grid{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:center}
 .miss-q{font-family:'DM Serif Display',serif;font-size:1.32rem;line-height:1.65;color:var(--char);font-style:italic;border-left:3px solid var(--sm);padding-left:1.7rem;margin-bottom:1.5rem}
 
-/* APP */
-#about-app{padding:7rem 0;background:var(--ww)}
-.tcol{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3.5rem}
-.fcard{background:white;border:1px solid var(--br);border-radius:16px;padding:2rem 1.4rem 1.8rem;transition:var(--ease);position:relative;overflow:hidden}
-.fcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--slate),var(--sl));transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease}
-.fcard:hover{transform:translateY(-4px);border-color:var(--sm);box-shadow:0 12px 40px rgba(110,138,160,0.1)}
-.fcard:hover::before{transform:scaleX(1)}
-.fstep{position:absolute;top:1.1rem;right:1.2rem;font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--sm);line-height:1;font-style:italic;transition:color 0.3s ease}
-.fcard:hover .fstep{color:var(--slate)}
-.fico{width:46px;height:46px;background:var(--sp);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
-.fico svg{width:22px;height:22px;stroke:var(--sd);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.ftit{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:0.55rem;font-weight:400;line-height:1.28;padding-right:1.5rem}
-.fdesc{font-size:0.93rem;color:var(--tm);line-height:1.72}
+/* HOW IT WORKS - sticky iPad scroll-driven story */
+#about-app{background:var(--ww);position:relative;padding:2.5rem 0 4rem;border-top:1px solid var(--br)}
+.hiw-intro{text-align:center;max-width:720px;margin:0 auto 3rem}
+.hiw-intro .stitle{margin-left:auto;margin-right:auto}
+.hiw-intro .sdiv{margin-left:auto;margin-right:auto}
+
+.hiw-stage{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:4rem;max-width:1200px;margin:0 auto;padding:0 2.5rem;align-items:flex-start}
+.hiw-track{display:flex;flex-direction:column;gap:0}
+.hiw-step{min-height:88vh;padding:8vh 0;display:flex;flex-direction:column;justify-content:center}
+.hiw-step:first-child{padding-top:4vh}
+.hiw-step:last-child{padding-bottom:4vh}
+.hiw-eyebrow{font-size:0.74rem;letter-spacing:0.22em;color:var(--slate);font-weight:500;text-transform:uppercase;margin-bottom:1.1rem}
+.hiw-h{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,2.6vw,2.4rem);line-height:1.18;color:var(--navy);margin-bottom:1.2rem;font-weight:400;letter-spacing:-0.01em;text-wrap:balance}
+.hiw-body{font-size:1.04rem;color:var(--tm);line-height:1.78;margin-bottom:1.8rem;max-width:520px}
+.hiw-chips{display:flex;flex-direction:column;align-items:flex-start;gap:0.55rem;margin:0 0 2rem;list-style:none;padding:0}
+.hiw-chip{display:inline-flex;align-items:center;gap:0.55rem;padding:0.6rem 1rem;background:rgba(110,138,160,0.08);border:1px solid rgba(110,138,160,0.22);border-radius:999px;font-size:0.86rem;color:var(--navy);font-weight:500}
+.hiw-chip svg{width:16px;height:16px;stroke:var(--slate);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.hiw-chip img{width:16px;height:16px;flex-shrink:0;object-fit:contain}
+
+/* Step 1 pathway graphic - branching fork into two pathway cards */
+.hiw-pathways{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin:0.75rem 0 2rem;padding-top:3.5rem;max-width:480px}
+.hiw-pathways-origin{position:absolute;top:0;left:50%;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:var(--slate);box-shadow:0 0 0 4px rgba(110,138,160,0.14);z-index:2}
+.hiw-pathways-fork{position:absolute;top:0;left:0;right:0;height:3.5rem;width:100%;pointer-events:none;overflow:visible}
+.hiw-pathways-fork path{stroke:var(--sm);stroke-width:1.4;fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.hiw-path-card{background:#fff;border:1px solid var(--br);border-radius:14px;padding:1.05rem 1.1rem 1.05rem 1.1rem;display:flex;flex-direction:column;align-items:center;gap:0.55rem;box-shadow:0 6px 20px rgba(40,56,72,0.04);transition:var(--ease)}
+.hiw-path-card:hover{border-color:rgba(110,138,160,0.4);transform:translateY(-1px);box-shadow:0 10px 28px rgba(40,56,72,0.08)}
+.hiw-path-icon{width:46px;height:46px;border-radius:11px;background:var(--sp);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hiw-path-icon svg{width:24px;height:24px;stroke:var(--sd);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.hiw-path-title{font-size:0.95rem;font-weight:600;color:var(--navy);letter-spacing:-0.01em;line-height:1.25;text-align:center}
+.hiw-path-desc{font-size:0.84rem;color:var(--tm);line-height:1.5}
+.hiw-quote{border-left:2px solid var(--slate);padding:0.4rem 0 0.4rem 1.2rem;margin-top:1.2rem;max-width:520px}
+.hiw-quote-txt{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem;line-height:1.55;color:var(--char);margin-bottom:0.55rem}
+.hiw-quote-attr{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate);font-weight:500}
+
+/* Sticky iPad column */
+.hiw-vis{position:sticky;top:13vh;height:74vh;display:flex;align-items:center;justify-content:center;padding-top:2vh}
+.hiw-progress{position:absolute;left:-1.8rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0.6rem;z-index:3}
+.hiw-progress-dot{width:7px;height:7px;border-radius:50%;background:rgba(110,138,160,0.3);transition:all 0.45s ease}
+.hiw-progress-dot.is-active{background:var(--slate);width:7px;height:24px;border-radius:4px}
+/* Offshoot callout - sits below-and-right of iPad with L-connector from iPad bottom-center.
+   Lives INSIDE .hiw-ipad so positioning is iPad-relative. */
+.hiw-offshoot{position:absolute;display:flex;align-items:center;gap:0.85rem;background:#fff;border:1px solid var(--br);border-radius:14px;padding:0.95rem 1.1rem 0.95rem 1rem;box-shadow:0 12px 32px rgba(40,56,72,0.12);opacity:0;visibility:hidden;transform:translateX(-12px);transition:opacity 0.55s ease, transform 0.55s ease, visibility 0s linear 0.55s;pointer-events:none;z-index:4}
+.hiw-offshoot.is-visible{opacity:1;visibility:visible;transform:translateX(0);transition:opacity 0.55s ease, transform 0.55s ease, visibility 0s linear 0s}
+/* Step 1 88% badge - sits below-right of iPad with L-connector from iPad bottom-center */
+.hiw-offshoot--step1{top:calc(100% + 3rem);right:-8rem;transform:translate(-12px,-12px) translateY(0);width:300px;max-width:300px}
+.hiw-offshoot--step1.is-visible{transform:translate(0,0)}
+.hiw-offshoot--step1::before,.hiw-offshoot--step1::after{display:none}
+/* Step 2 ES badge - same position pattern, smaller width since copy is shorter */
+.hiw-offshoot--step2{top:calc(100% + 3rem);right:-3rem;left:auto;bottom:auto;transform:translate(-12px,-12px);width:230px;padding:0.7rem 1rem 0.7rem 0.85rem;gap:0.6rem;max-width:230px}
+.hiw-offshoot--step2.is-visible{transform:translate(0,0)}
+
+.hiw-l-connector{position:absolute;pointer-events:none;z-index:3;opacity:0;visibility:hidden;transition:opacity 0.55s ease 0.2s, visibility 0s linear 0.55s}
+.hiw-l-connector.is-visible{opacity:1;visibility:visible;transition:opacity 0.55s ease 0.2s, visibility 0s linear 0s}
+.hiw-l-connector svg{display:block;width:100%;height:100%;overflow:visible}
+.hiw-l-connector path{stroke:var(--slate);stroke-width:1.5;fill:none;vector-effect:non-scaling-stroke;opacity:0.55}
+/* Both connectors: L-shape from iPad bottom-center down then right to badge.
+   Width = horizontal travel from center to badge left; Height = vertical drop to badge mid. */
+.hiw-l-connector--step1{top:100%;left:50%;width:7.4rem;height:5.6rem}
+.hiw-l-connector--step2{top:100%;left:50%;width:11rem;height:4.6rem}
+.hiw-off-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:2.4rem;line-height:1;color:var(--navy);font-weight:400;letter-spacing:-0.02em;flex-shrink:0}
+.hiw-off-num sub{font-size:0.5em;font-style:normal;color:var(--slate);vertical-align:baseline;margin-left:0.05em;letter-spacing:0;line-height:1}
+.hiw-off-langicon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--navy)}
+.hiw-off-langicon svg{width:100%;height:100%;stroke:var(--slate);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hiw-off-body{display:flex;flex-direction:column;gap:0.18rem;min-width:0;flex:1}
+.hiw-off-label{font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate);font-weight:500;line-height:1.2}
+.hiw-off-sub{font-size:0.82rem;color:var(--tm);line-height:1.45}
+
+.hiw-ipad{width:580px;height:430px;background:linear-gradient(160deg,#2a2a2a,#161616);border-radius:28px;border:2px solid rgba(255,255,255,0.09);padding:18px 40px 18px 40px;position:relative;box-shadow:0 30px 80px rgba(40,56,72,0.25),inset 0 1px 0 rgba(255,255,255,0.08)}
+.hiw-ipad-cam{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.18)}
+.hiw-ipad-home{position:absolute;right:11px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.14)}
+.hiw-screen{width:100%;height:100%;border-radius:8px;overflow:hidden;position:relative;background:#f2efea}
+
+/* Each scene is absolutely positioned, only one is visible (data-scene attribute) */
+.scene{position:absolute;inset:0;opacity:0;transform:scale(0.985);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);pointer-events:none;display:flex;flex-direction:column;background:#f2efea}
+.hiw-screen[data-scene="1"] .scene-1,
+.hiw-screen[data-scene="2"] .scene-2,
+.hiw-screen[data-scene="3"] .scene-3,
+.hiw-screen[data-scene="4"] .scene-4{opacity:1;transform:scale(1)}
+
+/* Scene shared elements: header bar */
+.scene-stripe{display:none}
+.scene-header{padding:13px 16px 11px;display:flex;justify-content:space-between;align-items:center;border-bottom:0.5px solid rgba(110,138,160,0.18);flex-shrink:0;background:#f2efea}
+.scene-brand{display:flex;align-items:center;gap:7px;height:28px}
+.scene-brand img{height:28px;width:auto;display:block;object-fit:contain}
+.scene-pill{display:inline-flex;align-items:center;gap:5px;background:#bdcad5;padding:3px 9px;border-radius:999px}
+.scene-pill-dot{width:5px;height:5px;background:#44576a;border-radius:50%}
+.scene-pill-txt{font-size:9px;color:#283848;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+
+/* SCENE 1 - Welcome / Doctor invites */
+.s1-body{flex:1;padding:14px 22px 12px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:8px;overflow:hidden}
+.s1-mark{width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.s1-mark img{width:100%;height:100%;object-fit:contain}
+.s1-title{font-size:14px;font-weight:600;color:var(--navy);letter-spacing:-0.2px;margin-top:2px}
+.s1-sub{font-size:11px;color:var(--tm);line-height:1.45;max-width:280px;margin-bottom:4px}
+.s1-options{display:flex;flex-direction:column;gap:6px;width:100%;max-width:300px;margin-top:2px}
+.s1-option{background:#fff;border:1px solid var(--br);border-radius:8px;padding:8px 11px;display:flex;align-items:center;gap:10px;text-align:left}
+.s1-option-ico{width:30px;height:30px;border-radius:7px;background:var(--sp);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.s1-option-ico svg{width:15px;height:15px;stroke:var(--sd);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.s1-option-txt{display:flex;flex-direction:column;gap:1px;min-width:0;flex:1}
+.s1-option-name{font-size:11px;font-weight:600;color:var(--navy);line-height:1.25}
+.s1-option-desc{font-size:9.5px;color:var(--tm);line-height:1.35}
+.s1-foot{padding:7px 16px;border-top:0.5px solid rgba(110,138,160,0.15);text-align:center;font-size:9px;color:var(--tl);flex-shrink:0}
+
+/* SCENE 2 - Video module */
+.s2-body{flex:1;padding:14px 18px 10px;display:flex;flex-direction:column;gap:8px}
+.s2-meta{display:flex;justify-content:space-between;align-items:center;font-size:9.5px;color:#5e6f82;letter-spacing:0.4px;text-transform:uppercase;font-weight:600}
+.s2-player{flex:1;background:linear-gradient(135deg,#1a2632,#0e1a2b);border-radius:8px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:140px}
+.s2-player::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(110,138,160,0.12) 0%,transparent 60%)}
+.s2-play{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.95);display:flex;align-items:center;justify-content:center;position:relative;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+.s2-play svg{width:18px;height:18px;fill:#0e1a2b;margin-left:3px}
+.s2-progress{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,0.15)}
+.s2-progress::after{content:'';position:absolute;top:0;left:0;height:100%;width:32%;background:#6e8aa0}
+.s2-cap{padding:6px 0 4px;text-align:center}
+.s2-cap-title{font-size:13px;font-weight:600;color:#0e1a2b;margin-bottom:2px}
+.s2-cap-sub{font-size:10px;color:#5e6f82;line-height:1.4}
+.s2-dots{display:flex;justify-content:center;gap:4px;margin-top:2px}
+.s2-dot{width:5px;height:5px;border-radius:50%;background:#bdcad5}
+.s2-dot.is-done{background:#6e8aa0}
+.s2-dot.is-current{background:#44576a;width:14px;border-radius:3px}
+.s2-actions{display:flex;justify-content:space-between;padding:6px 0 0;gap:6px}
+.s2-btn{padding:6px 14px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:0.2px;border:none;cursor:default}
+.s2-btn-g{background:transparent;border:1px solid #6e8aa0;color:#44576a;flex:1}
+.s2-btn-p{background:#0e1a2b;color:#f2efea;flex:1}
+
+/* SCENE 3 - Doctor reviewing */
+.s3-body{flex:1;padding:14px 18px 8px;display:flex;flex-direction:column;gap:8px}
+.s3-stepper{display:flex;justify-content:space-between;align-items:flex-start;position:relative;padding:6px 8px}
+.s3-stepper::before{content:'';position:absolute;top:18px;left:35px;right:35px;height:2px;background:#bdcad5;z-index:0}
+.s3-stepper-fill{position:absolute;top:18px;left:35px;height:2px;background:#6e8aa0;z-index:0;width:calc((100% - 70px) * 0.34)}
+.s3-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;width:54px}
+.s3-node-circle{width:24px;height:24px;border-radius:50%;background:#f2efea;border:1.5px solid #bdcad5;display:flex;align-items:center;justify-content:center;font-size:9px;color:#8a9aaa;font-weight:600}
+.s3-node.is-done .s3-node-circle{background:#6e8aa0;border-color:#6e8aa0;color:#fff}
+.s3-node.is-current .s3-node-circle{background:#6e8aa0;border-color:#6e8aa0;color:#fff;box-shadow:0 0 0 4px rgba(110,138,160,0.25)}
+.s3-node-circle svg{width:11px;height:11px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.s3-node-label{font-size:8px;color:#5e6f82;font-weight:500;letter-spacing:0.2px;text-align:center;line-height:1.2}
+.s3-node.is-current .s3-node-label,.s3-node.is-done .s3-node-label{color:#283848;font-weight:600}
+.s3-card{background:#fff;border:1px solid #bdcad5;border-radius:8px;padding:11px 14px;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:5px}
+.s3-card-title{font-size:13px;font-weight:600;color:#0e1a2b;letter-spacing:-0.2px}
+.s3-card-sub{font-size:10px;color:#5e6f82;line-height:1.5;max-width:280px}
+.s3-banner{background:#e4ebf2;border:1px solid #6e8aa0;border-radius:6px;padding:7px 10px;display:flex;align-items:center;gap:7px;margin-top:4px}
+.s3-banner svg{width:13px;height:13px;stroke:#44576a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.s3-banner-txt{font-size:10px;color:#283848;line-height:1.35}
+.s3-foot{padding:6px 16px;border-top:0.5px solid rgba(0,0,0,0.06);text-align:center;font-size:9px;color:#8a9aaa;flex-shrink:0}
+
+/* SCENE 4 - Plan certified */
+.s4-body{flex:1;padding:12px 18px 10px;display:flex;flex-direction:column;gap:7px;overflow:hidden}
+.s4-header-text{text-align:center;padding:2px 0 4px}
+.s4-header-text h3{font-size:13px;color:#0e1a2b;font-weight:600;letter-spacing:-0.2px;margin-bottom:1px}
+.s4-header-text p{font-size:10px;color:#5e6f82;line-height:1.35}
+.s4-doc{background:#fff;border:1px solid #bdcad5;border-radius:7px;padding:8px 10px;display:flex;align-items:center;gap:8px}
+.s4-doc-ico{width:26px;height:32px;background:#f8f6f1;border:1px solid #6e8aa0;border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+.s4-doc-ico::before{content:'';position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 6px 6px 0;border-color:transparent #6e8aa0 transparent transparent}
+.s4-doc-ico svg{width:11px;height:11px;stroke:#6e8aa0;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:6px}
+.s4-doc-txt{flex:1;min-width:0}
+.s4-doc-name{font-size:11px;font-weight:600;color:#0e1a2b;line-height:1.25}
+.s4-doc-desc{font-size:9px;color:#5e6f82;line-height:1.35}
+.s4-doc-pill{display:inline-flex;align-items:center;gap:3px;background:#e8f5e8;padding:2px 6px;border-radius:999px;flex-shrink:0}
+.s4-doc-pill svg{width:8px;height:8px;stroke:#2d7a2d;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.s4-doc-pill-txt{font-size:8.5px;color:#2d7a2d;font-weight:600;letter-spacing:0.3px}
+.s4-banner{background:#e4ebf2;border:1px solid #6e8aa0;border-radius:6px;padding:7px 10px;display:flex;align-items:center;gap:7px}
+.s4-banner svg{width:13px;height:13px;stroke:#44576a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.s4-banner-txt{font-size:9.5px;color:#283848;line-height:1.35}
+.s4-actions{display:flex;gap:5px;margin-top:auto}
+.s4-btn{flex:1;padding:6px 8px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:0.2px;border:none}
+.s4-btn-g{background:transparent;border:1px solid #6e8aa0;color:#44576a}
+.s4-btn-p{background:#0e1a2b;color:#f2efea;border:none}
+.s4-foot{padding:6px 16px;border-top:0.5px solid rgba(0,0,0,0.06);text-align:center;font-size:9px;color:#8a9aaa;flex-shrink:0}
+
+@media (max-width:1080px){
+  .hiw-stage{grid-template-columns:1fr;gap:0;padding:0 1.5rem}
+  .hiw-vis{display:none}
+  .hiw-step{min-height:auto;padding:2rem 0;border-bottom:1px solid var(--br)}
+  .hiw-step:first-child{padding-top:1rem}
+  .hiw-step:last-child{padding-bottom:1rem;border-bottom:none}
+  .hiw-progress{display:none}
+  #about-app{padding-bottom:2rem}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .scene{transition:none}
+  .hiw-progress-dot{transition:none}
+}
 
 /* STATS */
 #stats{padding:6rem 0;background:var(--navy);position:relative;overflow:hidden}
@@ -238,7 +416,7 @@ section{scroll-margin-top:80px}
 .affil-logo-box img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;background:transparent}
 
 /* PRESS / RECOGNITION STRIP */
-#press{background:var(--ww);padding:5.5rem 0 6rem;position:relative;overflow:hidden}
+#press{background:var(--ww);padding:5.5rem 0 3rem;position:relative;overflow:hidden}
 #press::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1100px,92%);height:1px;background:linear-gradient(90deg,transparent 0%,var(--br) 18%,var(--br) 82%,transparent 100%)}
 .press-head{max-width:720px;margin:0 auto 3rem;text-align:center;padding:0 2.5rem}
 .press-eyebrow{display:inline-block;font-size:0.74rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--slate);font-weight:500;margin-bottom:1rem;position:relative;padding:0 1.6rem}
@@ -274,26 +452,26 @@ section{scroll-margin-top:80px}
 
 /* COMPACT DEV-AT STRIP (under hero) */
 #devat{background:var(--ww);padding:2.6rem 0 2.8rem;border-bottom:1px solid var(--br)}
-.devat-inner{max-width:1320px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:center;gap:clamp(1.2rem,2.5vw,2.25rem);flex-wrap:wrap}
-.devat-group{display:inline-flex;align-items:center;gap:clamp(1rem,1.6vw,1.5rem)}
-.devat-label{font-size:0.82rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sd);font-weight:500;white-space:nowrap}
-.devat-logos{display:inline-flex;align-items:center;gap:clamp(1.25rem,1.8vw,1.75rem)}
-.devat-logo{display:flex;align-items:center;opacity:0.85;filter:grayscale(0.15);transition:opacity 0.25s, filter 0.25s}
+.devat-inner{max-width:1320px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:center;gap:clamp(0.9rem,1.8vw,1.6rem)}
+.devat-group{display:inline-flex;align-items:center;gap:clamp(0.85rem,1.4vw,1.35rem)}
+.devat-label{font-size:0.82rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sd);font-weight:500;white-space:nowrap;line-height:1;display:inline-flex;align-items:center;height:54px}
+.devat-logos{display:inline-flex;align-items:center;gap:clamp(1rem,1.6vw,1.5rem)}
+.devat-logo{display:inline-flex;align-items:center;justify-content:center;height:54px;opacity:0.85;filter:grayscale(0.15);transition:opacity 0.25s, filter 0.25s}
 .devat-logo:hover{opacity:1;filter:grayscale(0)}
 .devat-logo img{width:auto;object-fit:contain;background:transparent;display:block}
 /* Optical-height overrides: match the visible wordmark size across logos */
-.devat-logo--uthem img{height:56px}  /* 3-line stacked UT / McGovern / Emergency Medicine */
-.devat-logo--mh img{height:42px}     /* 2-line MEMORIAL / HERMANN */
-.devat-logo--hh img{height:26px}     /* Single-line HARRISHEALTH wordmark */
-.devat-logo--ioa img{height:48px}    /* 2-line UTHealth / Institute on Aging */
-.devat-sep{width:1px;height:52px;background:var(--br);flex-shrink:0}
-@media(max-width:1180px){
- .devat-inner{flex-direction:column;gap:1.6rem}
+.devat-logo--uthem img{height:46px}
+.devat-logo--mh img{height:46px}     /* 2-line MEMORIAL / HERMANN */
+.devat-logo--hh img{height:28px}     /* Single-line HARRISHEALTH wordmark */
+.devat-logo--ioa img{height:54px}    /* 2-line UTHealth / Institute on Aging - bumped */
+.devat-sep{width:1px;height:48px;background:var(--br);flex-shrink:0}
+@media(max-width:1100px){
+ .devat-inner{flex-wrap:wrap;flex-direction:column;gap:1.6rem}
  .devat-sep{width:72px;height:1px}
  .devat-group{flex-wrap:wrap;justify-content:center}
 }
 @media(max-width:760px){
- .devat-logo--uthem img{height:46px}
+ .devat-logo--uthem img{height:36px}
  .devat-logo--mh img{height:34px}
  .devat-logo--hh img{height:22px}
  .devat-logo--ioa img{height:40px}
@@ -391,13 +569,17 @@ h1.word-reveal, h2.word-reveal, h3.word-reveal{display:block}
 
 <!-- HERO -->
 <section id="home">
- <div class="hbg"></div>
+ <div class="hbg">
+   <div class="hbg-a"></div>
+   <div class="hbg-b"></div>
+   <div class="hbg-c"></div>
+ </div>
  <div class="container">
  <div class="hgrid">
  <div>
  <div class="hey">Developed at UTHealth Houston</div>
- <h1 class="hh word-reveal" data-wr-stagger="75">Comfort and clarity,<br><em>when it matters most.</em></h1>
- <p class="hb">My Health Code helps patients communicate what matters most to them - before they're too sick to speak for themselves. We turn medicine's hardest conversation into a clear, confident, and deeply personal choice.</p>
+ <h1 class="hh word-reveal" data-wr-stagger="75">Comfort and clarity, <em>when it matters most.</em></h1>
+ <p class="hb">A clinician-prescribed platform that guides patients through life's hardest medical decisions, producing a care plan doctors can rely on.</p>
  <div class="hact">
  <a href="#about-app" class="bp">See How It Works</a>
  <a href="#contact" class="bg">Partner With Us</a>
@@ -411,20 +593,21 @@ h1.word-reveal, h2.word-reveal, h3.word-reveal{display:block}
  </div>
  </div>
  <div class="hvis">
- <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
  <div class="ipad" role="button" tabindex="0" onclick="openVideo()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openVideo();}" aria-label="Play My Health Code overview video">
  <div class="ipad-cam" aria-hidden="true"></div>
  <div class="ipad-screen">
- <div class="ipad-logo-wrap">
- <img src="images/image_02.png" alt="My Health Code">
+ <div class="flow-stage" aria-hidden="true">
+ <img class="flow-intro-logo" src="images/logo_lockup_slate.png" alt="">
+ <div class="flow-intro-divider" aria-hidden="true"></div>
+ <p class="flow-intro-sub">An End-to-End Advance Care Planning Workflow</p>
  </div>
- <div class="ipad-play" aria-hidden="true">
- <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
- </div>
- <div class="ipad-caption">Watch how it works</div>
  </div>
  <div class="ipad-home" aria-hidden="true"></div>
  </div>
+ <button class="ipad-cta" type="button" onclick="openVideo()" aria-label="Watch My Health Code overview video">
+ <span class="ipad-cta-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+ Watch the overview
+ </button>
  </div>
  </div>
  <div class="chips">
@@ -459,7 +642,7 @@ h1.word-reveal, h2.word-reveal, h3.word-reveal{display:block}
  <div class="devat-group">
  <span class="devat-label">Developed at</span>
  <div class="devat-logos">
- <div class="devat-logo devat-logo--uthem"><img src="images/logo_uthealth_em.png" alt="UTHealth Houston McGovern Medical School - Emergency Medicine"></div>
+ <div class="devat-logo devat-logo--uthem"><img src="images/uthealth_horizontal_color.png" alt="UTHealth Houston"></div>
  </div>
  </div>
  <span class="devat-sep" aria-hidden="true"></span>
@@ -533,40 +716,301 @@ h1.word-reveal, h2.word-reveal, h3.word-reveal{display:block}
  </div>
 </section>
 
-<!-- THE APP -->
+<!-- THE APP - sticky iPad walkthrough -->
 <section id="about-app">
  <div class="container">
- <div class="reveal">
- <p class="slabel">The Application</p>
- <h2 class="stitle">Turning uncertainty into <em>confident choices.</em></h2>
+ <div class="reveal hiw-intro">
+ <p class="slabel">How It Works</p>
+ <h2 class="stitle">Four steps. <em>One clear plan.</em></h2>
  <div class="sdiv"></div>
- </div>
- <div class="tcol">
- <div class="fcard reveal d1">
- <span class="fstep">01</span>
- <div class="fico"><svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
- <h3 class="ftit">Understand Your Options</h3>
- <p class="fdesc">My Health Code translates complex medical decisions into plain language, using short videos and clear visuals - so every option is easy to grasp, regardless of medical background.</p>
- </div>
- <div class="fcard reveal d2">
- <span class="fstep">02</span>
- <div class="fico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
- <h3 class="ftit">Discover Your Values</h3>
- <p class="fdesc">Guided questions help you explore what quality of life means to you - your priorities, your fears, and what you would and wouldn't want from your care.</p>
- </div>
- <div class="fcard reveal d3">
- <span class="fstep">03</span>
- <div class="fico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
- <h3 class="ftit">Communicate With Confidence</h3>
- <p class="fdesc">Generate a clear summary of your preferences that travels with your care - so your voice leads every conversation, even when you can't speak for yourself.</p>
- </div>
- <div class="fcard reveal d3">
- <span class="fstep">04</span>
- <div class="fico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></div>
- <h3 class="ftit">Put Your Choices in Writing</h3>
- <p class="fdesc">Turn your decisions into an Advance Care Directive - the legal document that records your medical wishes - so any care team, anywhere, is required to honor them if you cannot speak for yourself.</p>
+ <p class="btext">From the first invitation to the final care plan, My Health Code keeps the conversation in the patient's voice - and within reach of every clinician on the team.</p>
  </div>
  </div>
+
+ <div class="hiw-stage">
+
+ <div class="hiw-track">
+
+ <article class="hiw-step" data-step="1">
+ <div class="hiw-eyebrow">Step 1 of 4</div>
+ <h3 class="hiw-h">Your doctor invites you.</h3>
+ <p class="hiw-body">Your clinician places the order through your medical record. From there, you complete My Health Code in one of two ways:</p>
+ <div class="hiw-pathways" aria-label="Two ways to complete My Health Code">
+ <svg class="hiw-pathways-fork" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
+ <!-- Bracket fork: trunk down from origin, horizontal crossbar, two short drops into card tops -->
+ <path d="M 100 6 V 28 M 50 28 H 150 M 50 28 V 58 M 150 28 V 58" />
+ </svg>
+ <div class="hiw-pathways-origin" aria-hidden="true"></div>
+ <div class="hiw-path-card hiw-path-card--bedside">
+ <div class="hiw-path-icon" aria-hidden="true">
+ <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M10 14h4M12 12v4"/></svg>
+ </div>
+ <div class="hiw-path-title">At the bedside</div>
+ <div class="hiw-path-desc">An Advance Care Planning Coordinator sets you up on a clinic or hospital iPad.</div>
+ </div>
+ <div class="hiw-path-card hiw-path-card--home">
+ <div class="hiw-path-icon" aria-hidden="true">
+ <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+ </div>
+ <div class="hiw-path-title">At home, on your device</div>
+ <div class="hiw-path-desc">A secure link is sent to you or the person who makes medical decisions for you.</div>
+ </div>
+ </div>
+ <div class="hiw-quote">
+ <p class="hiw-quote-txt">"It made me think about things I'd been avoiding for years. It was the first time I felt like I had a real conversation about things that mattered with my doctor, not just paperwork."</p>
+ <div class="hiw-quote-attr">J.M. - Patient, UTHealth Houston</div>
+ </div>
+ </article>
+
+ <article class="hiw-step" data-step="2">
+ <div class="hiw-eyebrow">Step 2 of 4</div>
+ <h3 class="hiw-h">You explore what matters.</h3>
+ <p class="hiw-body">You explore your values through short videos and questions, with family welcome to take part.</p>
+ <ul class="hiw-chips">
+ <li class="hiw-chip"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch 5 short videos.</li>
+ <li class="hiw-chip"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Answer 10+ questions.</li>
+ <li class="hiw-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>15 minutes.</li>
+ </ul>
+ <div class="hiw-quote">
+ <p class="hiw-quote-txt">"My daughter and I sat down together and went through it. It was the first real conversation we'd ever had about what I want."</p>
+ <div class="hiw-quote-attr">M.R. - Patient, UTHealth Houston</div>
+ </div>
+ </article>
+
+ <article class="hiw-step" data-step="3">
+ <div class="hiw-eyebrow">Step 3 of 4</div>
+ <h3 class="hiw-h">Your doctor reviews it with you.</h3>
+ <p class="hiw-body">Your doctor reads your answers, then sits down with you to review and answer any questions you have.</p>
+ <ul class="hiw-chips">
+ <li class="hiw-chip"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Unhurried review.</li>
+ <li class="hiw-chip"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Treatments match values.</li>
+ <li class="hiw-chip"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>Every question answered.</li>
+ </ul>
+ <div class="hiw-quote">
+ <p class="hiw-quote-txt">"The doctor took his time to explain everything and answered all my questions. I felt like they really cared, and they respected the choices I was making."</p>
+ <div class="hiw-quote-attr">A.G. - Patient, UTHealth Houston</div>
+ </div>
+ </article>
+
+ <article class="hiw-step" data-step="4">
+ <div class="hiw-eyebrow">Step 4 of 4</div>
+ <h3 class="hiw-h">Your plan is finalized.</h3>
+ <p class="hiw-body">Once your choices are confirmed, your doctor certifies them into a care plan that travels with your chart.</p>
+ <ul class="hiw-chips">
+ <li class="hiw-chip"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>Sent to your medical record.</li>
+ <li class="hiw-chip"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>Update at anytime.</li>
+ <li class="hiw-chip"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Legally valid forms.</li>
+ </ul>
+ <div class="hiw-quote">
+ <p class="hiw-quote-txt">"It was so convenient to do while I was at the hospital already, taking one more responsibility off my plate. It's already been decided, and documented."</p>
+ <div class="hiw-quote-attr">P.M. - Patient, UTHealth Houston</div>
+ </div>
+ </article>
+
+ </div>
+
+ <div class="hiw-vis">
+ <div class="hiw-progress" aria-hidden="true">
+ <div class="hiw-progress-dot is-active" data-dot="1"></div>
+ <div class="hiw-progress-dot" data-dot="2"></div>
+ <div class="hiw-progress-dot" data-dot="3"></div>
+ <div class="hiw-progress-dot" data-dot="4"></div>
+ </div>
+
+ <div class="hiw-ipad" aria-hidden="true">
+ <div class="hiw-ipad-cam"></div>
+ <!-- L-connector for Step 1 (88% badge): short L from iPad bottom-right corner -->
+ <div class="hiw-l-connector hiw-l-connector--step1 is-visible" data-for-step="1">
+ <svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M 0 0 V 100 H 100"/></svg>
+ </div>
+ <!-- L-connector for Step 2 (ES badge): short L from iPad bottom-right corner -->
+ <div class="hiw-l-connector hiw-l-connector--step2" data-for-step="2">
+ <svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M 0 0 V 100 H 100"/></svg>
+ </div>
+ <!-- Step-specific offshoot callouts (close to iPad's bottom-right corner) -->
+ <div class="hiw-offshoot hiw-offshoot--step1 is-visible" data-for-step="1" aria-hidden="true">
+ <span class="hiw-off-num">88<sub>%</sub></span>
+ <div class="hiw-off-body">
+ <span class="hiw-off-label">First-time completion</span>
+ <span class="hiw-off-sub">Patients finalize a care plan with their doctor on first use.</span>
+ </div>
+ </div>
+ <div class="hiw-offshoot hiw-offshoot--step2" data-for-step="2" aria-hidden="true">
+ <div class="hiw-off-langicon" aria-hidden="true">
+ <svg viewBox="0 0 24 24"><rect x="2" y="3" width="13" height="10" rx="2"/><path d="M5 13v3l3-3"/><rect x="9" y="10" width="13" height="10" rx="2"/><path d="M19 20v3l-3-3"/><text x="8.5" y="11" font-size="7" font-weight="700" text-anchor="middle" fill="currentColor" stroke="none" font-family="DM Sans, sans-serif">ES</text></svg>
+ </div>
+ <div class="hiw-off-body">
+ <span class="hiw-off-label">Languages</span>
+ <span class="hiw-off-sub">English &amp; Spanish supported.</span>
+ </div>
+ </div>
+ <div class="hiw-screen" data-scene="1">
+
+   <!-- SCENE 1: Welcome / Doctor invites -->
+   <div class="scene scene-1">
+     <div class="scene-header">
+       <div class="scene-brand">
+         <img src="images/logo_lockup_slate.png" alt="My Health Code">
+       </div>
+       <div class="scene-pill">
+         <div class="scene-pill-dot"></div>
+         <span class="scene-pill-txt">Invitation</span>
+       </div>
+     </div>
+     <div class="s1-body">
+       <div class="s1-mark"><img src="images/logo_mark_slate.png" alt=""></div>
+       <div class="s1-title">Welcome to My Health Code.</div>
+       <div class="s1-sub">Your clinician has ordered a care planning session to understand your values better.</div>
+       <div class="s1-options">
+         <div class="s1-option">
+           <div class="s1-option-ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 10h8M8 14h5"/><circle cx="12" cy="3" r="1"/><line x1="12" y1="4" x2="12" y2="6"/></svg></div>
+           <div class="s1-option-txt">
+             <span class="s1-option-name">iPad at the bedside</span>
+             <span class="s1-option-desc">Begin now with your care team.</span>
+           </div>
+         </div>
+         <div class="s1-option">
+           <div class="s1-option-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+           <div class="s1-option-txt">
+             <span class="s1-option-name">Mobile link at home</span>
+             <span class="s1-option-desc">Continue with family on your phone.</span>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="s1-foot">Questions? Talk to your care helper.</div>
+   </div>
+
+   <!-- SCENE 2: Video module -->
+   <div class="scene scene-2">
+     <div class="scene-header">
+       <div class="scene-brand">
+         <img src="images/logo_lockup_slate.png" alt="My Health Code">
+       </div>
+       <div class="scene-pill">
+         <div class="scene-pill-dot"></div>
+         <span class="scene-pill-txt">In Progress</span>
+       </div>
+     </div>
+     <div class="s2-body">
+       <div class="s2-meta">
+         <span>Module 1 of 5</span>
+         <span>How I Live My Life</span>
+       </div>
+       <div class="s2-player">
+         <div class="s2-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+         <div class="s2-progress"></div>
+       </div>
+       <div class="s2-cap">
+         <div class="s2-cap-title">How I Live My Life</div>
+         <div class="s2-cap-sub">A short video about what makes a day feel like yours.</div>
+       </div>
+       <div class="s2-dots">
+         <div class="s2-dot is-done"></div>
+         <div class="s2-dot is-current"></div>
+         <div class="s2-dot"></div>
+         <div class="s2-dot"></div>
+         <div class="s2-dot"></div>
+       </div>
+       <div class="s2-actions">
+         <button class="s2-btn s2-btn-g">Back</button>
+         <button class="s2-btn s2-btn-p">Continue</button>
+       </div>
+     </div>
+   </div>
+
+   <!-- SCENE 3: Doctor reviewing -->
+   <div class="scene scene-3">
+     <div class="scene-header">
+       <div class="scene-brand">
+         <img src="images/logo_lockup_slate.png" alt="My Health Code">
+       </div>
+       <div class="scene-pill">
+         <div class="scene-pill-dot"></div>
+         <span class="scene-pill-txt">Being Reviewed</span>
+       </div>
+     </div>
+     <div class="s3-body">
+       <div class="s3-stepper">
+         <div class="s3-stepper-fill"></div>
+         <div class="s3-node is-done">
+           <div class="s3-node-circle"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+           <div class="s3-node-label">You answered</div>
+         </div>
+         <div class="s3-node is-current">
+           <div class="s3-node-circle">2</div>
+           <div class="s3-node-label">Doctor reviews</div>
+         </div>
+         <div class="s3-node">
+           <div class="s3-node-circle">3</div>
+           <div class="s3-node-label">Confirm together</div>
+         </div>
+         <div class="s3-node">
+           <div class="s3-node-circle">4</div>
+           <div class="s3-node-label">Care team</div>
+         </div>
+       </div>
+       <div class="s3-card">
+         <div class="s3-card-title">Your doctor is reviewing your answers now.</div>
+         <div class="s3-card-sub">You did a great job. We'll let you know when your doctor is ready to talk it through.</div>
+       </div>
+       <div class="s3-banner">
+         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+         <span class="s3-banner-txt">Nothing to do right now - your doctor will reach out shortly.</span>
+       </div>
+     </div>
+     <div class="s3-foot">Questions? Talk to your care helper.</div>
+   </div>
+
+   <!-- SCENE 4: Plan certified -->
+   <div class="scene scene-4">
+     <div class="scene-header">
+       <div class="scene-brand">
+         <img src="images/logo_lockup_slate.png" alt="My Health Code">
+       </div>
+       <div class="scene-pill">
+         <div class="scene-pill-dot"></div>
+         <span class="scene-pill-txt">Plan Certified</span>
+       </div>
+     </div>
+     <div class="s4-body">
+       <div class="s4-header-text">
+         <h3>Your care plan is ready.</h3>
+         <p>Signed and saved to your medical record.</p>
+       </div>
+       <div class="s4-doc">
+         <div class="s4-doc-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+         <div class="s4-doc-txt">
+           <div class="s4-doc-name">Care plan summary</div>
+           <div class="s4-doc-desc">Your values, choices, and care preferences.</div>
+         </div>
+         <div class="s4-doc-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span class="s4-doc-pill-txt">Signed</span></div>
+       </div>
+       <div class="s4-doc">
+         <div class="s4-doc-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+         <div class="s4-doc-txt">
+           <div class="s4-doc-name">DNR / DNI form</div>
+           <div class="s4-doc-desc">Official DNR form.</div>
+         </div>
+         <div class="s4-doc-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span class="s4-doc-pill-txt">Signed</span></div>
+       </div>
+       <div class="s4-banner">
+         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+         <span class="s4-banner-txt">Now visible to every clinician on your care team.</span>
+       </div>
+       <div class="s4-actions">
+         <button class="s4-btn s4-btn-g">View plan</button>
+         <button class="s4-btn s4-btn-p">Download PDF</button>
+       </div>
+     </div>
+     <div class="s4-foot">Need a change? Talk to your care helper.</div>
+   </div>
+
+ </div>
+ <div class="hiw-ipad-home"></div>
+ </div>
+ </div>
+
  </div>
 </section>
 
@@ -757,32 +1201,32 @@ h1.word-reveal, h2.word-reveal, h3.word-reveal{display:block}
  <div class="tmcard reveal d1">
  <img class="tmav" src="images/07_tmav.jpg" alt="Shreyans Sanghvi, DO">
  <p class="tmname">Shreyans Sanghvi, DO</p>
- <p class="tmrole">Founder &middot; Emergency Medicine</p>
+ <p class="tmrole">Founder &amp; Project Lead</p>
  <div class="tmbio">
- <p>Inspired by the contrasting end-of-life journeys of his own grandparents, Dr. Sanghvi places patients' values at the center of care across emergency medicine, critical care, and palliative practice.</p>
+ <p>Inspired by the contrasting end-of-life journeys of his own grandparents, Dr. Sanghvi is an emergency physician whose work places patients' values at the center of care, with a particular focus on the moments where emergency medicine intersects with critical care and palliative needs.</p>
  <p>His work has been presented nationally, published in peer-reviewed journals, and supported by UTHealth Houston institutional grants.</p>
  </div>
- <span class="tmtag">Founder</span>
+ <span class="tmtag">Emergency Medicine</span>
  </div>
  <div class="tmcard reveal d2">
  <img class="tmav" src="images/08_tmav.jpg" alt="Caroline Ha, MD">
  <p class="tmname">Caroline Ha, MD</p>
- <p class="tmrole">Co-Founder &middot; Palliative Care</p>
+ <p class="tmrole">Content Expert: Palliative Care</p>
  <div class="tmbio">
  <p>Dr. Ha brings decades of experience as a palliative care physician and fellowship director, having guided countless patients and families through medicine's most difficult conversations.</p>
  <p>Her clinical expertise shapes every aspect of My Health Code, ensuring the application is compassionate, rigorous, and genuinely useful at the bedside.</p>
  </div>
- <span class="tmtag">Co-Founder</span>
+ <span class="tmtag">Palliative Care</span>
  </div>
  <div class="tmcard reveal d3">
- <img class="tmav" src="images/09_tmav.jpg" alt="Thaddeus Puzio, MD">
- <p class="tmname">Thaddeus Puzio, MD</p>
- <p class="tmrole">Co-Founder &middot; Surgery &amp; Critical Care</p>
+ <img class="tmav" src="images/09_tmav.jpg" alt="Thaddeus Puzio, MD, MS">
+ <p class="tmname">Thaddeus Puzio, MD, MS</p>
+ <p class="tmrole">Content Expert: Research</p>
  <div class="tmbio">
  <p>Dr. Puzio leads My Health Code's rigorous research program through randomized controlled trials, supported by multiple institutional innovation grants.</p>
  <p>As Director of the Surgical Trauma ICU at Memorial Hermann, he applies MHC daily at the bedside - bridging evidence-based research with real-world critical care.</p>
  </div>
- <span class="tmtag">Co-Founder</span>
+ <span class="tmtag">Surgical Critical Care</span>
  </div>
  </div>
  </div>
@@ -801,28 +1245,33 @@ h1.word-reveal, h2.word-reveal, h3.word-reveal{display:block}
  <div class="pcard reveal d1">
  <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Conference &amp; Journal</p>
  <p class="ptit">When Decisions Matter Most: Changing the Paradigm of Goals-of-Care Discussions for Seriously Ill Patients in Acute Care</p>
- <p class="pven">MD Anderson Oncologic EM Conference, Feb 2026 &middot; Accepted, Journal of Emergency Medicine 2026</p>
+ <p class="pven">Sanghvi S, Des Bordes J, Ha C, Puzio T, Richey-Carson E, Balasubramanian B, Luber S &middot; MD Anderson Oncologic EM Conference, Feb 2026 &middot; Accepted, Journal of Emergency Medicine, 2026</p>
  </div>
  <div class="pcard reveal d2">
  <div class="abadge"><svg viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,5 8.5,7.5 9.2,11 6,9.3 2.8,11 3.5,7.5 1,5 4.5,4.5"/></svg>1st Place</div>
  <p class="ptype"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Symposium Award</p>
  <p class="ptit">Acceptability of a Video-Based Tool for Code Status Discussions in Older Adults and their Surrogates After Trauma</p>
- <p class="pven">UTHealth Geriatric Trauma Symposium, Feb 2026</p>
+ <p class="pven">Karpe AS, Fajemisin MO, Martinez Ugarte S, Blakely ML, Khraish G, Sanghvi S, Furbacher J, Kao LS, Puzio TJ &middot; UTHealth Geriatric Trauma Symposium, Feb 2026</p>
  </div>
  <div class="pcard reveal d1">
- <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Peer-Reviewed Journal</p>
- <p class="ptit">Knowledge of CPR and Code Status Discussions in Injured Older Adults: Does Health Literacy Matter?</p>
- <p class="pven">Journal of Applied Gerontology, 2023</p>
+ <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Accepted - Journal of Medical Internet Research</p>
+ <p class="ptit">Advancing Discussions using a Video-based Support tool about End-of-life care: the ADVISE Project</p>
+ <p class="pven">Fajemisin MO, Karpe AS, Martinez Ugarte S, Blakely ML, Khraish G, Sanghvi S, Lee JL, Kao LS, Puzio TJ &middot; Journal of Medical Internet Research, 2026</p>
  </div>
  <div class="pcard reveal d2">
- <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Journal &amp; National Conference</p>
- <p class="ptit">Rethinking Resuscitation: Insights on End-of-Life Care Practices in High Mortality Risk Patients</p>
- <p class="pven">Annals of Emergency Medicine 2025 &middot; ACEP Research Forum 2025</p>
+ <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Published - Annals of Emergency Medicine</p>
+ <p class="ptit">Rethinking Resuscitation</p>
+ <p class="pven">Sanghvi S, Furbacher J, Arneson M, Richey-Carson E, Abdelhalim D, Ha C, Sturkie A, Puzio T, Cooper B, Luber S &middot; Annals of Emergency Medicine, 2025</p>
  </div>
- <div class="pcard reveal d1" style="grid-column:span 2">
+ <div class="pcard reveal d1">
  <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Published - Journal of Emergency Medicine</p>
  <p class="ptit">Decoding Code Status: Assessing End-of-Life Care Knowledge in High-Risk Emergency Department Populations</p>
- <p class="pven">Journal of Emergency Medicine 2025 &middot; MD Anderson Oncologic EM Conference, Feb 2025</p>
+ <p class="pven">Sanghvi S, Furbacher J, Puzio TJ, Ha C, Abdelhalim D, Arneson M, Sturkie A, Richey-Carson E, Cooper B, Luber S &middot; Journal of Emergency Medicine, 2025</p>
+ </div>
+ <div class="pcard reveal d2">
+ <p class="ptype"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Peer-Reviewed Journal</p>
+ <p class="ptit">Knowledge of CPR and Code Status Discussions in Traumatically Injured Older Adults: Does Health Literacy Matter?</p>
+ <p class="pven">Fajemisin MO, Karpe AS, Martinez Ugarte S, Hatton GE, Mueck K, Kao LS, Blakely ML, Khraish GH, Naik A, Sanghvi S, Lee JL, Puzio TJ &middot; Journal of Applied Gerontology, 2025</p>
  </div>
  </div>
  <div class="grow">
@@ -850,7 +1299,7 @@ h1.word-reveal, h2.word-reveal, h3.word-reveal{display:block}
  <p class="affil-label">Institutional Affiliations &amp; Partners</p>
  <div class="affil-logos">
  <div class="affil-logo-box">
- <img src="images/logo_uthealth_em.png" alt="UTHealth Houston McGovern Medical School - Emergency Medicine">
+ <img src="images/uthealth_horizontal_color.png" alt="UTHealth Houston">
  </div>
  <div class="affil-logo-box">
  <img src="images/logo_memorial_hermann.png" alt="Memorial Hermann">
@@ -960,7 +1409,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   parts.forEach(part => {
    if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
    if (/^</.test(part)) { const tmp = document.createElement('template'); tmp.innerHTML = part; frag.appendChild(tmp.content.cloneNode(true) || document.createTextNode(part)); return; }
-   // Real word or punctuation chunk — wrap in span with delay
+   // Real word or punctuation chunk - wrap in span with delay
    const span = document.createElement('span');
    span.className = 'wr-word';
    span.textContent = part;
@@ -1074,6 +1523,67 @@ function closeVideo(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeVideo(); });
+
+/* Hero title card: fade in logo + divider + subhead on load */
+(function(){
+  const stage = document.querySelector('.flow-stage');
+  if (!stage) return;
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { stage.classList.add('intro-played'); return; }
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => stage.classList.add('intro-played'));
+  });
+})();
+
+/* How-It-Works: scroll-driven iPad scene swap.
+   Each .hiw-step block triggers its corresponding scene as it crosses
+   the focal zone (~45% down the viewport). */
+(function(){
+  const screen = document.querySelector('.hiw-screen');
+  const steps = document.querySelectorAll('.hiw-step');
+  const dots = document.querySelectorAll('.hiw-progress-dot');
+  const offshoots = document.querySelectorAll('.hiw-offshoot');
+  const lconnectors = document.querySelectorAll('.hiw-l-connector');
+  if (!screen || !steps.length) return;
+
+  function setActive(stepNum){
+    screen.setAttribute('data-scene', String(stepNum));
+    dots.forEach(d => {
+      const dn = parseInt(d.dataset.dot, 10);
+      d.classList.toggle('is-active', dn === stepNum);
+    });
+    offshoots.forEach(o => {
+      const fs = parseInt(o.dataset.forStep, 10);
+      o.classList.toggle('is-visible', fs === stepNum);
+    });
+    lconnectors.forEach(c => {
+      const fs = parseInt(c.dataset.forStep, 10);
+      c.classList.toggle('is-visible', fs === stepNum);
+    });
+  }
+
+  // Use IntersectionObserver with rootMargin to define the focal zone
+  // The step that is within the central band of the viewport "wins"
+  const obs = new IntersectionObserver((entries) => {
+    // Find the entry currently most visible (highest intersection ratio)
+    let best = null;
+    entries.forEach(e => {
+      if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) {
+        best = e;
+      }
+    });
+    if (best) {
+      const stepNum = parseInt(best.target.dataset.step, 10);
+      setActive(stepNum);
+    }
+  }, {
+    // Focal band: from 35% to 55% of viewport - the iPad's vertical center zone
+    rootMargin: '-35% 0px -45% 0px',
+    threshold: [0, 0.25, 0.5, 0.75, 1]
+  });
+
+  steps.forEach(s => obs.observe(s));
+})();
 </script>
 <!-- Video modal -->
 <div class="vmodal" id="vmodal" onclick="if(event.target===this)closeVideo()" role="dialog" aria-modal="true" aria-label="Product video">
