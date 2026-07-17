@@ -331,7 +331,7 @@ footer a{color:var(--sl);text-decoration:none}
   <h1 class="hh">What does it mean for us when the most expensive care we render at the bedside is most often <em>the care our patients wanted least?</em></h1>
   <p class="hb">The U.S. population over 65 is set to nearly double by 2050, with a growing share of terminally ill patients committed to intensive care few would actually choose. Early goals-of-care discussions can realign that care with patients' values, lower the cost of unwanted treatment, and improve hospital metrics, yet they remain widely underused and unevenly implemented. We're here to change that.</p>
   <div class="hcta">
-   <a href="#calc" class="hbtn hbtn-p">Explore the Impact</a>
+   <a href="#value" class="hbtn hbtn-p">Explore the Impact</a>
    <a href="#value" class="hbtn hbtn-g">See How It Works</a>
   </div>
  </div>
@@ -351,10 +351,6 @@ footer a{color:var(--sl);text-decoration:none}
    <div class="stat"><div class="n">&lt; 20%</div><div class="l">ever get a goals-of-care discussion</div></div>
   </div>
   <div class="srcline">From our published study of high-risk seriously ill patients at MH-TMC and Harris Health (<a href="https://www.annemergmed.com/article/S0196-0644(25)00438-X/fulltext" style="color:var(--accent-d)">Ann Emerg Med, 2025</a>); national baselines per AHA and CDC.</div>
-  <div class="turn turn-cost">
-   <div class="tt">The average cost of a missed goals-of-care conversation, resulting in aggressive end-of-life care most patients never wanted.</div>
-   <div class="tn">~ $16K<span class="tu"> / patient</span></div>
-  </div>
  </div>
 </section>
 
@@ -364,12 +360,10 @@ footer a{color:var(--sl);text-decoration:none}
   <h2 class="stitle">Quality goals-of-care discussions, <em>earlier in their course of hospitalization.</em></h2>
   <div class="sdiv"></div>
   <p class="btext">Structured goals-of-care workflows that pair clinicians with technology-mediated decision aids are the most consistently effective and scalable way to hold these conversations, producing not only better care, but improved hospital efficiency, downstream resource utilization, and lower acute cost of care.</p>
-  <div class="capband" style="grid-template-columns:repeat(3,1fr)">
-   <div class="capcell"><div class="n">~ 100</div><div class="l">Hospital bed-days returned / month</div></div>
-   <div class="capcell"><div class="n">~ 35</div><div class="l">ICU bed-days returned / month</div></div>
-   <div class="capcell"><div class="n">81%</div><div class="l">Higher chance of an ethical<br>transition to hospice</div></div>
+  <div class="capband" style="grid-template-columns:1fr;max-width:360px;margin:2rem auto 0">
+   <div class="capcell"><div class="n">81%</div><div class="l">Higher chance of an ethical transition to hospice</div></div>
   </div>
-  <div class="srcline" style="margin-top:2.5rem">Per ~200 eligible patients a month, drawn from the strongest available evidence in the field's highest-impact peer-reviewed journals. Simply prompting physicians to have a GOC discussion, without ensuring a quality conversation, changes nothing.</div>
+  <div class="srcline" style="margin-top:2.5rem">Drawn from the strongest available evidence in the field's highest-impact peer-reviewed journals. Simply prompting physicians to have a GOC discussion, without ensuring a quality conversation, changes nothing.</div>
  </div>
 </section>
 
@@ -433,92 +427,6 @@ footer a{color:var(--sl);text-decoration:none}
  </div>
 </section>
 
-<section id="calc">
- <div class="container">
-  <div class="slabel">Understanding Your Cost Exposure</div>
-  <h2 class="stitle">How well do you really know <em>what runs under your own hood?</em></h2>
-  <p class="lead">Data is power. Four questions worth asking within your own institution.</p>
-  <div class="probe">
-   <div class="qcard"><div class="qn">1</div><div class="qcol"><div class="qt">What share of your seriously ill patients receive a goals-of-care discussion early in their hospital course?</div><div class="qs">That one number reveals your exposure to the cost and resource drain of value-discordant care.</div></div></div>
-   <div class="qcard"><div class="qn">2</div><div class="qcol"><div class="qt">Does your practice culture defer every goals-of-care discussion to palliative consultants, or only the complex ones?</div><div class="qs">Routing simple goals-of-care discussions to palliative consultants is like consulting cardiology to read a basic EKG: costly and resource-intensive. Let MHC handle the routine cases, and reserve your consultants for the complex ones.</div></div></div>
-   <div class="qcard"><div class="qn">3</div><div class="qcol"><div class="qt">Are you measuring the quality of those conversations, or only that they happened?</div><div class="qs">Quality discussions rely on the structured, evidence-based frameworks palliative physicians train on. MHC is built on those same frameworks, so any physician can lead one with the same rigor.</div></div></div>
-   <div class="qcard"><div class="qn">4</div><div class="qcol"><div class="qt">What is value-discordant care costing you each month, in beds, ICU days, and readmission penalties?</div><div class="qs">A hospital bed is a finite resource. Reserving each bed, ICU day, and aggressive treatment for the patients who want and consent to it is also how you meet Age-Friendly Health System measures.</div></div></div>
-  </div>
-  <p class="probe-close">The model below estimates the last one, pre-loaded with national benchmarks. Adjust anything you know.</p>
-
-  <div class="calc-shell">
-   <div class="panel">
-    <h3>Your Hospital</h3>
-    <div class="seg" id="preset">
-     <button data-p="quat" class="on">Commercial payer mix</button>
-     <button data-p="safety">Safety-net</button>
-    </div>
-    <div class="seg-help" id="presetHelp"></div>
-
-    <div class="grouplab">Clinical effect scenario<span class="info" style="margin-left:0.45rem;text-transform:none;letter-spacing:0">i<span class="tip">Estimates apply a 60% real-world implementation discount through a patient funnel (60% reach and 80% engagement). ICU days are treated as a subset of total length of stay to avoid double counting. Figures are projections for planning, validated on your own data during the pilot.</span></span></div>
-    <div class="seg" id="scenario">
-     <button data-s="cons" class="on">Conservative</button>
-     <button data-s="neut">Neutral</button>
-     <button data-s="aggr">Aggressive</button>
-    </div>
-    <div class="seg-help" id="scenHelp">Literature-anchored effect sizes. Conservative uses the low end of every published range. Sources: Kammili 2025, Johnson 2025, O'Connor 2018.</div>
-
-    <div class="grouplab">Volume and cost inputs</div>
-    <div class="fld" data-k="tap">
-     <div class="fld-top"><span class="fld-lab">Eligible patients / month<span class="info">i<span class="tip">High-risk inpatients flagged as candidates for a goals-of-care discussion, identified by an EHR query. One service line is typically around 200.</span></span></span><span class="fld-val" id="v-tap"></span></div>
-     <input type="range" id="s-tap" min="50" max="600" step="10">
-    </div>
-    <div class="fld" data-k="medsurg">
-     <div class="fld-top"><span class="fld-lab">Variable cost / Med-Surg day<span class="info">i<span class="tip">Direct variable cost per medical-surgical bed-day, excluding fixed overhead. National benchmark around $1,500.</span></span></span><span class="fld-val" id="v-medsurg"></span></div>
-     <div class="srange"><input type="range" id="s-medsurg" min="300" max="3000" step="5"><span class="tick" data-for="s-medsurg" data-avg="1500" style="left:44.44%" title="National average $1,500. Click to reset."></span></div>
-    </div>
-    <div class="fld" data-k="icu">
-     <div class="fld-top"><span class="fld-lab">Variable cost / ICU day<span class="info">i<span class="tip">Direct variable cost per ICU bed-day, higher due to staffing and equipment. National benchmark around $3,000.</span></span></span><span class="fld-val" id="v-icu"></span></div>
-     <div class="srange"><input type="range" id="s-icu" min="800" max="5000" step="10"><span class="tick" data-for="s-icu" data-avg="3000" style="left:52.38%" title="National average $3,000. Click to reset."></span></div>
-    </div>
-    <div class="fld" data-k="readmit">
-     <div class="fld-top"><span class="fld-lab">Cost / 30-day readmission<span class="info">i<span class="tip">Direct cost of one 30-day readmission episode. National average around $15,500.</span></span></span><span class="fld-val" id="v-readmit"></span></div>
-     <div class="srange"><input type="range" id="s-readmit" min="5000" max="60000" step="500"><span class="tick" data-for="s-readmit" data-avg="15500" style="left:19.09%" title="National average $15,500. Click to reset."></span></div>
-    </div>
-    <div class="fld" data-k="margin" id="fld-margin">
-     <div class="fld-top"><span class="fld-lab">Contribution margin / new admission<span class="info">i<span class="tip">Net revenue minus direct costs on a backfilled admission. Typically 8,000 to 10,000. Applies only when backfill is on.</span></span></span><span class="fld-val" id="v-margin"></span></div>
-     <input type="range" id="s-margin" min="0" max="20000" step="250">
-    </div>
-
-    <div class="switchrow" id="row-backfill">
-     <span class="lab">Include backfill opportunity<span class="info">i<span class="tip">Counts margin earned when freed beds are refilled with new admissions, at 75% of freed capacity and a 5-day average stay. Off for safety-net hospitals, which lack the payer mix to backfill at margin.</span></span></span>
-     <label class="switch"><input type="checkbox" id="s-backfill"><span class="slider-sw"></span></label>
-    </div>
-   </div>
-
-   <div>
-    <div class="out-hero">
-     <div class="cap">Projected annual value</div>
-     <div class="num" id="o-annual">$0</div>
-     <div class="sub" id="o-sub"></div>
-    </div>
-    <div class="tiles">
-     <div class="tile"><div class="tn" id="o-hospdays">0</div><div class="tl">Hospital bed-days saved / mo</div></div>
-     <div class="tile"><div class="tn" id="o-icudays">0</div><div class="tl">ICU bed-days saved / mo</div></div>
-     <div class="tile"><div class="tn" id="o-hard">$0</div><div class="tl">LOS and ICU hard savings / mo</div></div>
-     <div class="tile"><div class="tn" id="o-readmit">$0</div><div class="tl">Readmission savings / mo</div></div>
-     <div class="tile full" id="tile-margin"><div class="tn" id="o-margin">$0</div><div class="tl">Backfill opportunity margin / mo</div></div>
-    </div>
-    <div class="panel" style="margin-top:1.2rem;padding:1.4rem 1.6rem">
-     <div style="font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sl);font-weight:600">Monthly value composition</div>
-     <div class="bar" id="bar"></div>
-     <div class="barleg" id="barleg"></div>
-     <div style="display:flex;justify-content:space-between;margin-top:1rem;padding-top:0.9rem;border-top:1px solid rgba(110,138,160,0.18);font-size:0.9rem">
-      <span style="color:rgba(242,239,234,0.7)">Total monthly value</span>
-      <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.2rem;color:#fff" id="o-monthly">$0</span>
-     </div>
-    </div>
-    <p class="disc">Figures shown are illustrative projections for planning, based on published benchmarks and early pilot data - not a guarantee, warranty, or promise of financial results. Actual results vary by institution and would be validated on your own data during a pilot. Program cost is set together with your institution. <a href="index.html#contact" style="color:var(--accent)">Let's talk through what it would take &rarr;</a></p>
-   </div>
-  </div>
- </div>
-</section>
-
 <section id="cta">
  <div class="container">
   <div class="cta-box">
@@ -566,105 +474,6 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 var nav=document.getElementById('navbar');
 addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30)});
 
-/* ===== Calculator ===== */
-var FUNNEL={reach:0.6,engage:0.8,effect:0.6}, BACKFILL_REALIZE=0.75, AVG_LOS_BACKFILL=5;
-var PRESETS={
- quat:{tap:200,medsurg:1500,icu:3000,readmit:15500,margin:9000,backfill:true,
-   help:"Commercial-majority payer mix. Freed beds can be refilled with margin-positive admissions, so backfill value is counted. Cost inputs default to national benchmarks."},
- safety:{tap:200,medsurg:1500,icu:3000,readmit:15500,margin:0,backfill:false,
-   help:"Safety-net hospital. Value comes from direct cost avoidance and readmission reduction; backfill margin is excluded. Cost inputs default to national benchmarks."}
-};
-var SCEN={cons:{hosplos:0.6,iculos:0.17,rdx:0.022},neut:{hosplos:1.71,iculos:0.60,rdx:0.056},aggr:{hosplos:2.82,iculos:0.98,rdx:0.090}};
-var curPreset='quat',curScen='cons';
-
-var ids=['tap','medsurg','icu','readmit','margin'];
-var S={}; ids.forEach(function(k){S[k]=document.getElementById('s-'+k)});
-var backfillEl=document.getElementById('s-backfill');
-
-function money(n){return '$'+Math.round(n).toLocaleString()}
-function moneyK(n){n=Math.round(n);
- if(Math.abs(n)>=1e6)return '$'+(n/1e6).toFixed(2)+'M';
- if(Math.abs(n)>=1e3)return '$'+(n/1e3).toFixed(0)+'K';
- return '$'+n;}
-
-function applyPreset(p){
- curPreset=p;var d=PRESETS[p];
- S.tap.value=d.tap;S.medsurg.value=d.medsurg;S.icu.value=d.icu;S.readmit.value=d.readmit;S.margin.value=d.margin;
- backfillEl.checked=d.backfill;
- document.getElementById('presetHelp').textContent=d.help;
- document.querySelectorAll('#preset button').forEach(function(b){b.classList.toggle('on',b.dataset.p===p)});
- document.getElementById('row-backfill').style.display=(p==='safety')?'none':'flex';
- syncBackfillUI();compute();
-}
-function syncBackfillUI(){
- var on=backfillEl.checked&&curPreset!=='safety';
- document.getElementById('fld-margin').style.display=on?'block':'none';
- document.getElementById('tile-margin').style.display=on?'block':'none';
-}
-function setScenario(s){
- curScen=s;
- document.querySelectorAll('#scenario button').forEach(function(b){b.classList.toggle('on',b.dataset.s===s)});
- compute();
-}
-
-function compute(){
- var tap=+S.tap.value,medsurg=+S.medsurg.value,icu=+S.icu.value,readmit=+S.readmit.value,margin=+S.margin.value;
- var sc=SCEN[curScen];
- var backfill=backfillEl.checked&&curPreset!=='safety';
-
- document.getElementById('v-tap').textContent=tap;
- document.getElementById('v-medsurg').textContent=money(medsurg);
- document.getElementById('v-icu').textContent=money(icu);
- document.getElementById('v-readmit').textContent=money(readmit);
- document.getElementById('v-margin').textContent=money(margin);
-
- var engaged=tap*FUNNEL.reach*FUNNEL.engage;
- var effective=engaged*FUNNEL.effect;
- var hospDays=effective*sc.hosplos;
- var icuDays=effective*sc.iculos;
- var medsurgSav=Math.max(hospDays-icuDays,0)*medsurg;
- var icuSav=icuDays*icu;
- var hardLOS=medsurgSav+icuSav;
- var readmitSav=effective*sc.rdx*readmit;
- var newAdmits=backfill?hospDays/AVG_LOS_BACKFILL:0;
- var oppMargin=backfill?newAdmits*margin*BACKFILL_REALIZE:0;
- var gross=hardLOS+readmitSav+oppMargin;
- var annual=gross*12;
-
- document.getElementById('o-annual').textContent=moneyK(annual);
- document.getElementById('o-monthly').textContent=money(gross);
- document.getElementById('o-sub').textContent=money(gross)+' / month in cost avoidance'+(backfill?' and backfill margin':'');
- document.getElementById('o-hospdays').textContent=hospDays.toFixed(1);
- document.getElementById('o-icudays').textContent=icuDays.toFixed(1);
- document.getElementById('o-hard').textContent=money(hardLOS);
- document.getElementById('o-readmit').textContent=money(readmitSav);
- document.getElementById('o-margin').textContent=money(oppMargin);
-
- var parts=[['LOS and ICU savings',hardLOS,'#9db2c4'],['Readmission savings',readmitSav,'#6e8aa0']];
- if(backfill)parts.push(['Backfill margin',oppMargin,'#44576a']);
- var tot=parts.reduce(function(a,b){return a+b[1]},0)||1;
- document.getElementById('bar').innerHTML=parts.map(function(p){return '<i style="width:'+(p[1]/tot*100)+'%;background:'+p[2]+'"></i>'}).join('');
- document.getElementById('barleg').innerHTML=parts.map(function(p){return '<span><span class="dot" style="background:'+p[2]+'"></span>'+p[0]+' &middot; '+money(p[1])+'</span>'}).join('');
-}
-
-ids.forEach(function(k){S[k].addEventListener('input',compute)});
-backfillEl.addEventListener('change',function(){syncBackfillUI();compute()});
-document.querySelectorAll('#preset button').forEach(function(b){b.addEventListener('click',function(){applyPreset(b.dataset.p)})});
-document.querySelectorAll('#scenario button').forEach(function(b){b.addEventListener('click',function(){setScenario(b.dataset.s)})});
-
-applyPreset('quat');
-
-document.querySelectorAll('.tick').forEach(function(t){
- t.addEventListener('click',function(){
-  var el=document.getElementById(t.dataset.for);
-  el.value=t.dataset.avg;
-  el.dispatchEvent(new Event('input'));
- });
-});
-
-document.querySelectorAll('.cite a').forEach(function(a){
- a.addEventListener('click',function(){var d=document.getElementById('refbox');if(d)d.open=true;});
-});
 </script>
 </body>
 </html>
