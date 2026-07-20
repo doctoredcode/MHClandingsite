@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For Health Systems - My Health Code</title>
+<meta name="description" content="My Health Code is an end-to-end advance care planning workflow for seriously ill hospitalized patients. Earlier, quality goals-of-care discussions that improve goal-concordant care while reducing length of stay, ICU days, readmissions, and cost. Built at UTHealth Houston.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#283848">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --slate:#6e8aa0;--sl:#9db2c4;--sd:#44576a;
+ --sp:#e4ebf2;--sm:#bdcad5;
+ --navy:#283848;--char:#2c3e48;
+ --ww:#f2efea;--ow:#eae6df;
+ --tp:#283848;--tm:#5e6f82;--tl:#8a9aaa;
+ --br:rgba(110,138,160,0.18);
+ --accent:#9db2c4;--accent-d:#5e7589;
+ --ease:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:var(--ww);color:var(--tp);line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.3rem 3rem;background:transparent;border-bottom:1px solid transparent;transition:var(--ease)}
+nav.scrolled{padding:0.6rem 3rem;background:rgba(30,42,56,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(110,138,160,0.2)}
+.nav-logo{text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.nav-logo .wm{font-family:'Space Grotesk',sans-serif;font-size:1.32rem;color:#f2efea;letter-spacing:0.01em}
+.nav-logo .tg{font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sl);margin-top:3px}
+.nav-logo img{height:36px;width:auto;display:block}
+.nav-right{display:flex;align-items:center;gap:2rem}
+.nav-back{font-size:0.82rem;letter-spacing:0.05em;color:rgba(242,239,234,0.6);text-decoration:none;transition:color 0.2s}
+.nav-back:hover{color:var(--sl)}
+.nav-cta{background:var(--ww);color:var(--navy);padding:0.5rem 1.3rem;border-radius:50px;font-size:0.82rem;font-weight:600;letter-spacing:0.02em;text-decoration:none;transition:var(--ease);border:1.5px solid var(--ww)}
+.nav-cta:hover{background:#fff;border-color:#fff;transform:translateY(-1px)}
+
+section{scroll-margin-top:90px}
+.container{max-width:1080px;margin:0 auto;padding:0 2.5rem}
+.slabel{font-size:0.76rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-d);margin-bottom:1rem;font-weight:600;display:inline-flex;align-items:center;gap:0.5rem}
+.slabel::before{content:'+';font-weight:700;font-size:1.05rem;line-height:0}
+.stitle{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.05rem,3.5vw,3rem);line-height:1.08;font-weight:700;letter-spacing:-0.03em;color:var(--navy);margin-bottom:1.2rem;text-wrap:balance}
+.stitle em{font-style:normal;color:var(--accent-d)}
+.sdiv{width:38px;height:2px;background:var(--accent-d);margin:1.5rem 0 1.4rem;border-radius:2px}
+.btext{font-size:1.04rem;color:var(--tm);line-height:1.85}
+.btext strong{color:var(--navy);font-weight:600}
+.sec{padding:6rem 0}
+.sec-alt{background:var(--ow)}
+
+/* HERO */
+#hero{min-height:92vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;background:#141a28 url('/hero-bg.jpg') center/cover no-repeat;padding:9rem 0 4.5rem}
+.hbg{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to right,rgba(15,21,33,0.70) 0%,rgba(15,21,33,0.52) 35%,rgba(20,29,44,0.34) 62%,rgba(24,34,52,0.30) 100%),linear-gradient(to top,rgba(15,21,33,0.45) 0%,rgba(15,21,33,0.07) 50%,transparent 85%)}
+@keyframes horb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-3%,4%) scale(1.07)}}
+.hwrap{position:relative;z-index:1;max-width:840px;margin:0;padding-left:3vw}
+.hey{font-size:0.74rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem}
+.hey::before{content:'';width:30px;height:1px;background:var(--accent)}
+.hh{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.35rem,2.3vw,1.65rem);line-height:1.16;color:#f2efea;margin-bottom:1.2rem;font-weight:700;letter-spacing:-0.02em;text-wrap:balance}
+.hh em{font-style:normal;color:var(--accent)}
+.hb{font-size:0.9rem;color:rgba(242,239,234,0.84);line-height:1.6;margin-bottom:2rem;max-width:840px}
+.hcta{display:flex;gap:1rem;margin-top:2.3rem;flex-wrap:wrap}
+.hbtn{display:inline-block;padding:0.85rem 1.7rem;border-radius:50px;font-size:0.9rem;font-weight:500;letter-spacing:0.01em;text-decoration:none;transition:var(--ease)}
+.hbtn-p{background:var(--ww);color:var(--navy);border:1.5px solid var(--ww)}
+.pbadge{position:absolute;z-index:1;width:54px;height:54px;border-radius:50%;background:var(--accent);box-shadow:0 12px 34px rgba(110,138,160,0.40)}
+.pbadge::before,.pbadge::after{content:'';position:absolute;top:50%;left:50%;background:var(--navy);transform:translate(-50%,-50%);border-radius:1px}
+.pbadge::before{width:18px;height:3px}
+.pbadge::after{width:3px;height:18px}
+.hbtn-p:hover{transform:translateY(-2px);background:#fff;border-color:#fff}
+.hbtn-g{border:1.5px solid var(--accent);color:#d4e0e8}
+.hbtn-g:hover{border-color:rgba(242,239,234,0.6);color:#fff;transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.hbg::before{animation:none}}
+.hchips{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:720px}
+.hchip{background:rgba(110,138,160,0.09);border:1px solid rgba(110,138,160,0.24);border-left:3px solid var(--sl);border-radius:0 12px 12px 0;padding:1.1rem 1.3rem}
+.hchip b{display:block;font-family:'Space Grotesk',sans-serif;font-style:italic;font-size:1.8rem;color:#f2efea;line-height:1;margin-bottom:0.45rem}
+.hchip span{font-size:0.78rem;color:rgba(242,239,234,0.72);line-height:1.4;display:block}
+
+/* RATIO ROW */
+.ratios{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin:2.6rem 0}
+.ratio{background:#fff;border:1px solid var(--br);border-radius:14px;padding:1.7rem 1.5rem;text-align:center}
+.ratio .n{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;color:var(--navy);line-height:1}
+.ratio .l{font-size:0.9rem;color:var(--tm);margin-top:0.6rem;line-height:1.45}
+.callout{border-left:3px solid var(--slate);background:rgba(110,138,160,0.08);border-radius:0 12px 12px 0;padding:1.4rem 1.7rem;margin:2.2rem 0 0;font-family:'Space Grotesk',sans-serif;font-size:1.22rem;color:var(--navy);line-height:1.45;font-style:italic}
+.statstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:0.7rem 0 0.9rem}
+.stat{background:#fff;border:1px solid var(--br);border-radius:16px;padding:1.8rem 1.05rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px}
+.stat .n{font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:600;color:var(--navy);line-height:1;letter-spacing:-0.02em;font-feature-settings:"tnum"}
+.stat .l{font-size:0.92rem;font-weight:500;color:var(--tm);margin-top:0.7rem;line-height:1.35}
+.srcline{font-size:0.76rem;color:var(--tl);line-height:1.55;margin-top:0.2rem}
+.turn{display:flex;align-items:center;gap:1.6rem;background:var(--navy);border-radius:16px;padding:1.7rem 2rem;margin-top:1.8rem}
+.value-cta{text-align:center;margin-top:2rem}
+.wbtn{display:inline-block;background:#fff;color:var(--navy);padding:0.9rem 2.2rem;border-radius:50px;text-decoration:none;font-weight:500;letter-spacing:0.03em;border:1px solid rgba(40,56,72,0.18);box-shadow:0 6px 20px rgba(40,56,72,0.1);transition:var(--ease)}
+.wbtn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(40,56,72,0.16);background:#fff}
+.turn .tn{font-family:'Space Grotesk',sans-serif;font-style:normal;font-weight:600;font-size:2.8rem;color:var(--sl);line-height:1;flex-shrink:0;letter-spacing:-0.02em;min-width:5.5ch;text-align:center}
+.turn .tn .tu{font-size:0.52em;font-style:normal;color:rgba(242,239,234,0.62);letter-spacing:0.01em}
+.turn .tt{font-size:1.02rem;color:rgba(242,239,234,0.9);line-height:1.55}
+.stripcap{font-size:0.95rem;font-weight:600;color:var(--accent-d);margin:2.4rem 0 0;letter-spacing:0.01em}
+.turn.turn-cost{flex-direction:column;align-items:flex-start;gap:0.7rem}
+.turn.turn-cost .tt{font-size:1.04rem;color:rgba(242,239,234,0.86);line-height:1.55;max-width:66ch}
+.turn.turn-cost .tn{min-width:0;text-align:left;font-size:3rem}
+.barriers{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1rem}
+.barrier{background:var(--navy);border-radius:16px;padding:1.8rem;display:flex;gap:1.5rem;align-items:center}
+.bicon{flex-shrink:0;width:60px;height:60px;display:flex;align-items:center;justify-content:center}
+.bicon img{width:60px;height:60px;object-fit:contain;opacity:0.92}
+.binfo{min-width:0;border-left:1px solid rgba(157,178,196,0.28);padding-left:1.5rem}
+.barrier .btag{font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.5rem}
+.barrier .bnum{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.4rem;color:#f2efea;line-height:1;letter-spacing:-0.02em;margin-bottom:0.7rem}
+.barrier .bcopy{font-size:0.92rem;color:rgba(242,239,234,0.78);line-height:1.55}
+.barrier .bcopy .cite a{color:var(--accent)}
+.qcard .qcol{min-width:0}
+.qs{font-size:0.98rem;color:rgba(242,239,234,0.62);line-height:1.55;max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease,margin-top .35s ease}
+.qcard:hover .qs,.qcard:focus-within .qs{max-height:340px;opacity:1;margin-top:0.7rem}
+.capband{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:2rem 0 0}
+.capcell{background:var(--navy);border-radius:16px;padding:1.9rem 1.6rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.capcell .n{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:3rem;color:#f2efea;line-height:1;letter-spacing:-0.02em;font-feature-settings:"tnum"}
+.capcell .l{font-size:1rem;font-weight:500;color:rgba(242,239,234,0.8);margin-top:0.6rem;line-height:1.4;white-space:nowrap}
+.proofcap{font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tl);font-weight:600;margin:2.2rem 0 0}
+.proofstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1rem;border-top:1px solid var(--br);padding-top:1.4rem}
+.proofcell{font-size:0.86rem;color:var(--tm);line-height:1.55}
+.proofcell b{font-family:'Space Grotesk',sans-serif;font-weight:400;color:var(--slate);font-size:1.3rem;display:block;margin-bottom:0.25rem}
+.matrix{margin-top:1.2rem;border:1px solid var(--br);border-radius:14px;overflow:hidden;background:#fff}
+.mrow{display:grid;grid-template-columns:1.4fr 1.5fr 0.8fr;align-items:stretch}
+.mrow>div{padding:1.1rem 1.3rem;font-size:0.94rem;border-top:1px solid var(--br);line-height:1.4;display:flex;align-items:center}
+.mhead>div{border-top:none;background:var(--ow);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tm);font-weight:600}
+.mrow .meff{color:var(--tm)}
+.mno{color:#b1503f;font-weight:600;white-space:nowrap}
+.myes{color:#2f7d5b;font-weight:600;white-space:nowrap}
+.mwin>div{background:rgba(157,178,196,0.20);color:var(--navy)}
+.mwin>div:first-child{font-weight:600}
+.mwin .meff{color:var(--navy)}
+.vsm{margin-top:1.8rem;border:1px solid var(--br);border-radius:14px;overflow:hidden;background:#fff}
+.vsrow{display:grid;grid-template-columns:0.8fr 1.1fr 1.1fr;align-items:stretch}
+.vsrow>div{padding:1.05rem 1.3rem;font-size:0.92rem;border-top:1px solid var(--br);line-height:1.4}
+.vsrow .vdim{color:var(--tl);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;display:flex;align-items:center;font-weight:600}
+.vsrow .vtrad{color:var(--tm)}
+.vsrow .vmhc{background:rgba(157,178,196,0.18);color:var(--navy)}
+.vlist{margin:0.4rem 0 0;padding-left:1.15rem;list-style:disc}
+.vlist li{margin-bottom:0.15rem}
+.vshead>div{border-top:none;font-family:'Space Grotesk',sans-serif;font-size:1.05rem}
+.vshead .vtrad{color:var(--sd)}
+.vshead .vmhc{background:var(--navy);color:#f2efea}
+.vshead .vdim{font-family:'Space Grotesk',sans-serif}
+
+/* CARD GRIDS */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.4rem}
+.card{background:#fff;border:1px solid var(--br);border-radius:14px;padding:1.7rem;transition:var(--ease)}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(40,56,72,0.08);border-color:rgba(110,138,160,0.35)}
+.card .kt{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;color:var(--navy);margin-bottom:0.5rem}
+.card .kb{font-size:0.93rem;color:var(--tm);line-height:1.65}
+.card .src{font-size:0.76rem;color:var(--tl);margin-top:0.85rem;letter-spacing:0.02em}
+.card .big{font-family:'Space Grotesk',sans-serif;font-style:italic;font-size:1.95rem;color:var(--slate);display:block;margin-bottom:0.45rem;line-height:1}
+
+/* scale strip */
+.scalebar{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.4rem;border-top:1px solid var(--br);padding-top:2rem}
+.scalebar div{flex:1;min-width:150px}
+.scalebar .n{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;color:var(--navy);line-height:1}
+.scalebar .l{font-size:0.82rem;color:var(--tm);margin-top:0.4rem;line-height:1.4}
+
+/* ===== BARRIERS: vertical slider ===== */
+.barwrap{display:grid;grid-template-columns:120px 1fr;gap:2rem;margin-top:2.6rem;align-items:stretch}
+.vbar{display:flex;flex-direction:column;align-items:center;gap:0.9rem}
+.vend{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tl);text-align:center;line-height:1.3;cursor:pointer;transition:color 0.25s;font-weight:600}
+.vend.on{color:var(--slate)}
+.vtrack{position:relative;flex:1;width:10px;background:var(--ow);border:1px solid var(--br);border-radius:10px;cursor:pointer;min-height:240px;touch-action:none}
+.vfill{position:absolute;left:0;right:0;top:0;background:linear-gradient(var(--sl),var(--slate));border-radius:10px}
+.vhandle{position:absolute;left:50%;width:30px;height:30px;border-radius:50%;background:#fff;border:3px solid var(--slate);transform:translate(-50%,-50%);box-shadow:0 6px 18px rgba(40,56,72,0.25);cursor:grab}
+.vhandle:active{cursor:grabbing}
+.bpanel{position:relative;background:var(--navy);border-radius:16px;padding:2.4rem;overflow:hidden;min-height:240px}
+.bpanel::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--slate),transparent)}
+.bstate{position:absolute;inset:0;padding:2.4rem;opacity:0;transition:opacity 0.4s ease;pointer-events:none;display:flex;flex-direction:column;justify-content:center}
+.bstate.on{opacity:1;pointer-events:auto}
+.bstate .bnum{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:3.2rem;color:#f2efea;line-height:1;letter-spacing:-0.02em}
+.bstate .btag{font-size:0.74rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--sl);margin:0.5rem 0 0.9rem;font-weight:600}
+.bstate .bcopy{font-size:1rem;color:rgba(242,239,234,0.8);line-height:1.7;max-width:560px}
+.bstate .bsrc{font-size:0.78rem;color:rgba(242,239,234,0.5);margin-top:1rem}
+
+/* ===== COMPARISON wipe slider ===== */
+
+/* ===== CALCULATOR ===== */
+#calc{background:var(--navy);color:#f2efea;padding:6rem 0}
+#calc .slabel{color:var(--sl)}
+#calc .stitle{color:#f2efea}
+#calc .lead{font-size:1.02rem;color:rgba(242,239,234,0.74);max-width:680px;line-height:1.75}
+.probe{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2.6rem 0 1rem;align-items:start}
+.qcard{background:rgba(110,138,160,0.08);border:1px solid rgba(110,138,160,0.22);border-radius:14px;padding:1.6rem 1.7rem;display:flex;gap:1.1rem;position:relative;min-height:128px;cursor:pointer;transition:background .25s ease,border-color .25s ease}
+.qcard:hover{background:rgba(110,138,160,0.13);border-color:rgba(110,138,160,0.4)}
+.qcard::after{content:"\25BE";position:absolute;top:1.6rem;right:1.5rem;color:var(--sl);font-size:0.85rem;transition:transform .3s ease;pointer-events:none}
+.qcard:hover::after{transform:rotate(180deg)}
+.qcard .qn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.6rem;color:var(--sl);line-height:1;flex-shrink:0}
+.qcard .qcol{display:flex;flex-direction:column;min-width:0;padding-right:1.2rem}
+.qcard .qt{font-size:1.12rem;color:rgba(242,239,234,0.92);line-height:1.5;font-weight:500}
+.probe-close{font-size:0.95rem;color:rgba(242,239,234,0.7);line-height:1.7;margin-bottom:0.5rem;white-space:nowrap}
+.calc-shell{display:grid;grid-template-columns:1fr 0.92fr;gap:2rem;margin-top:2.4rem;align-items:start}
+.panel{background:rgba(110,138,160,0.08);border:1px solid rgba(110,138,160,0.22);border-radius:16px;padding:1.8rem}
+.panel h3{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sl);font-weight:600;margin-bottom:1.2rem}
+.seg{display:flex;background:rgba(20,30,42,0.6);border:1px solid rgba(110,138,160,0.25);border-radius:50px;padding:4px}
+.seg button{flex:1;border:none;background:transparent;color:rgba(242,239,234,0.65);font-family:inherit;font-size:0.82rem;font-weight:500;padding:0.6rem 0.5rem;border-radius:50px;cursor:pointer;transition:var(--ease);letter-spacing:0.02em}
+.seg button.on{background:var(--accent);color:var(--navy)}
+.seg-help{font-size:0.76rem;color:rgba(242,239,234,0.5);margin:0.6rem 0 1.4rem;line-height:1.5}
+.switchrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.9rem 0;border-top:1px solid rgba(110,138,160,0.18);margin-top:0.4rem}
+.switchrow .lab{font-size:0.9rem;color:rgba(242,239,234,0.9);display:flex;align-items:center;gap:0.4rem}
+.switch{position:relative;width:44px;height:24px;flex-shrink:0}
+.switch input{opacity:0;width:0;height:0}
+.slider-sw{position:absolute;inset:0;background:rgba(110,138,160,0.3);border-radius:24px;cursor:pointer;transition:0.3s}
+.slider-sw::before{content:'';position:absolute;height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:0.3s}
+.switch input:checked + .slider-sw{background:var(--slate)}
+.switch input:checked + .slider-sw::before{transform:translateX(20px)}
+.fld{margin-bottom:1.25rem}
+.fld-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.8rem}
+.fld-lab{font-size:0.85rem;color:rgba(242,239,234,0.85);display:flex;align-items:center;gap:0.35rem}
+.fld-val{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.02rem;color:#fff}
+input[type=range]{-webkit-appearance:none;appearance:none;display:block;margin:0;width:100%;height:4px;border-radius:4px;background:rgba(110,138,160,0.3);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--sl);cursor:pointer;border:3px solid var(--navy);box-shadow:0 0 0 1px var(--sl)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--sl);cursor:pointer;border:3px solid var(--navy)}
+.srange{position:relative;padding-bottom:30px}
+.srange input{position:relative;z-index:2}
+.tick{position:absolute;top:3px;transform:translateX(-50%);width:16px;height:30px;cursor:pointer;z-index:1}
+.tick::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:2px;height:19px;background:var(--sl);border-radius:1px}
+.tick::after{content:"avg";position:absolute;top:20px;left:50%;transform:translateX(-50%);font-size:0.56rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--tl);white-space:nowrap}
+.tick:hover::before{background:#fff}
+.tick:hover::after{color:var(--sl)}
+.grouplab{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sl);font-weight:600;margin:1.6rem 0 1rem;padding-top:1.2rem;border-top:1px solid rgba(110,138,160,0.18)}
+.grouplab:first-of-type{margin-top:0;padding-top:0;border-top:none}
+.info{position:relative;display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;border:1px solid rgba(157,178,196,0.7);color:var(--sl);font-size:0.62rem;font-weight:600;font-style:normal;cursor:help;font-family:'Space Grotesk',sans-serif;flex-shrink:0}
+.info:hover .tip{opacity:1;visibility:visible;transform:translateY(0)}
+.tip{position:absolute;bottom:140%;left:50%;transform:translateX(-50%) translateY(6px);width:230px;background:#1a2632;border:1px solid rgba(110,138,160,0.4);border-radius:10px;padding:0.7rem 0.85rem;font-size:0.76rem;font-style:normal;line-height:1.5;color:rgba(242,239,234,0.92);opacity:0;visibility:hidden;transition:var(--ease);z-index:20;box-shadow:0 14px 36px rgba(0,0,0,0.5);text-align:left;letter-spacing:0}
+.tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#1a2632}
+.out-hero{background:linear-gradient(160deg,rgba(110,138,160,0.16),rgba(110,138,160,0.05));border:1px solid rgba(110,138,160,0.3);border-radius:16px;padding:1.8rem;text-align:center;margin-bottom:1.2rem}
+.out-hero .cap{font-size:0.74rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sl);margin-bottom:0.5rem}
+.out-hero .num{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:2.9rem;color:#fff;line-height:1;letter-spacing:-0.02em}
+.out-hero .sub{font-size:0.95rem;color:rgba(242,239,234,0.78);margin-top:0.7rem}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}
+.tile{background:rgba(20,30,42,0.45);border:1px solid rgba(110,138,160,0.18);border-radius:12px;padding:1rem 1.1rem}
+.tile .tn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.45rem;color:#f2efea;line-height:1}
+.tile .tl{font-size:0.75rem;color:rgba(242,239,234,0.6);margin-top:0.35rem;line-height:1.35}
+.tile.full{grid-column:1/-1}
+.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:1.1rem 0 0.7rem;background:rgba(20,30,42,0.5)}
+.bar i{display:block;height:100%;transition:width 0.4s ease}
+.barleg{display:flex;flex-wrap:wrap;gap:0.4rem 1rem;font-size:0.74rem;color:rgba(242,239,234,0.7)}
+.barleg span{display:flex;align-items:center;gap:0.35rem}
+.dot{width:9px;height:9px;border-radius:2px;display:inline-block}
+.disc{font-size:0.74rem;color:rgba(242,239,234,0.45);margin-top:1.6rem;line-height:1.55;max-width:740px}
+
+/* CTA + FOOTER */
+#cta{padding:6rem 0;text-align:center}
+.cta-box{background:var(--navy);border-radius:24px;padding:4rem 2.5rem;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(110,138,160,0.25),transparent 70%)}
+.cta-box>*{position:relative;z-index:1}
+.cta-box h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,3.2vw,2.7rem);color:#f2efea;margin-bottom:1.1rem;font-weight:700;letter-spacing:-0.03em}
+.cta-box p{color:rgba(242,239,234,0.74);max-width:560px;margin:0 auto 2rem;font-size:1.02rem}
+.cta-btn{display:inline-block;background:var(--ww);color:var(--navy);padding:0.9rem 2.2rem;border-radius:50px;text-decoration:none;font-weight:500;letter-spacing:0.03em;transition:var(--ease)}
+.cta-btn:hover{transform:translateY(-2px);background:#fff}
+.cta-head{display:flex;align-items:center;justify-content:center;gap:1.05rem;margin-bottom:1.1rem;flex-wrap:wrap}
+.cta-head h2{margin-bottom:0}
+.cta-mark{width:56px;height:56px;flex-shrink:0;object-fit:contain}
+.cta-lede{color:rgba(242,239,234,0.74);max-width:600px;margin:0 auto 2.2rem;font-size:1.02rem}
+.pfeat{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;text-align:left;max-width:780px;margin:0 auto 2.6rem}
+.pf{display:flex;gap:1.1rem;align-items:center;background:rgba(110,138,160,0.1);border:1px solid rgba(110,138,160,0.2);border-radius:14px;padding:1.15rem 1.25rem}
+.pf-wide{grid-column:1 / -1}
+.pf-ic{flex-shrink:0;width:42px;height:42px;border-radius:11px;background:rgba(157,178,196,0.16);display:flex;align-items:center;justify-content:center;color:var(--sl)}
+.pf-ic svg{width:22px;height:22px}
+.pf-t{font-family:'Space Grotesk',sans-serif;font-weight:600;color:#f2efea;font-size:1.02rem;margin-bottom:0.28rem}
+.pf-d{font-size:0.88rem;color:rgba(242,239,234,0.7);line-height:1.5}
+footer{background:var(--char);color:rgba(242,239,234,0.6);padding:2.5rem 0;font-size:0.84rem}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer a{color:var(--sl);text-decoration:none}
+.cite{font-size:0.62em;vertical-align:super;line-height:0;font-weight:600;margin-left:1px}
+.cite a{color:var(--slate);text-decoration:none;padding:0 1px}
+.cite a:hover{text-decoration:underline}
+#refs{padding:3rem 0;background:var(--ow);scroll-margin-top:90px}
+#refs details{max-width:1080px;margin:0 auto;padding:0 2.5rem}
+#refs summary{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;color:var(--navy);cursor:pointer;list-style:none;display:flex;align-items:center;gap:0.7rem}
+#refs summary::-webkit-details-marker{display:none}
+#refs summary::before{content:'+';color:var(--slate);font-size:1.4rem;font-family:'Space Grotesk',sans-serif}
+#refs details[open] summary::before{content:'-'}
+#refs ol{margin:1.5rem 0 0;padding-left:1.5rem;color:var(--tm);font-size:0.85rem;line-height:1.6}
+#refs li{margin-bottom:0.8rem;scroll-margin-top:100px}
+#refs li a{color:var(--slate)}
+#refs .note{font-size:0.78rem;color:var(--tl);margin-top:1rem;line-height:1.55;max-width:760px}
+
+@media(max-width:880px){
+ nav{padding:0.9rem 1.4rem}.nav-back{display:none}
+ .container{padding:0 1.4rem}
+ .sec{padding:4rem 0}#calc{padding:4rem 0}
+ .hchips,.ratios,.grid3,.probe,.capband,.proofstrip{grid-template-columns:1fr}
+ .statstrip{grid-template-columns:1fr 1fr}
+ .calc-shell{grid-template-columns:1fr}
+ .barwrap,.barriers{grid-template-columns:1fr}
+ .vbar{flex-direction:row;min-height:0}
+ .vtrack{min-height:0;height:10px;width:100%;flex:1}
+ .vfill{top:0;bottom:0;right:auto;width:0}
+ .scalebar div{min-width:45%}
+ .turn{flex-direction:column;align-items:flex-start;gap:0.7rem}
+ .mhead{display:none}
+ .mrow{grid-template-columns:1fr;border-top:1px solid var(--br)}
+ .mrow>div{border-top:none;padding:0.25rem 1.2rem}
+ .mrow>div:first-child{font-weight:600;color:var(--navy);padding-top:1rem}
+ .mrow>div:last-child{padding-bottom:1rem}
+ .vshead{display:none}
+ .vsrow{grid-template-columns:1fr;border-top:1px solid var(--br);padding:0.5rem 0}
+ .vsrow>div{border-top:none;padding:0.25rem 1.2rem}
+ .vsrow .vdim{color:var(--navy);padding-top:0.9rem}
+ .vsrow .vmhc{background:transparent;padding-bottom:0.9rem}
+ .cta-box{padding:2.5rem 1.4rem}
+ .pfeat{grid-template-columns:1fr}
+ .pf-wide{grid-column:auto}
+ .probe-close{white-space:normal}
+ .qcard{min-height:0;cursor:default}
+ .qcard::after{display:none}
+ .qcard .qs{max-height:none;opacity:1;margin-top:0.7rem;overflow:visible}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+ <a href="/index.html#home" class="nav-logo">
+  <img src="/logo_lockup_a.png" alt="My Health Code">
+ </a>
+ <div class="nav-right">
+  <a href="/index.html#home" class="nav-back">&larr; Main site</a>
+  <a href="/index.html#contact" class="nav-cta">Get in Touch</a>
+ </div>
+</nav>
+
+<section id="hero">
+ <div class="hbg"></div>
+ <div class="pbadge" style="top:20%;right:13%"></div>
+ <div class="container hwrap">
+  <div class="hey">For Health Systems</div>
+  <h1 class="hh">What does it mean for us when the most expensive care we render at the bedside is most often <em>the care our patients wanted least?</em></h1>
+  <p class="hb">The U.S. population over 65 is set to nearly double by 2050, with a growing share of terminally ill patients committed to intensive care few would actually choose. Early goals-of-care discussions can realign that care with patients' values, lower the cost of unwanted treatment, and improve hospital metrics, yet they remain widely underused and unevenly implemented. We're here to change that.</p>
+  <div class="hcta">
+   <a href="#calc" class="hbtn hbtn-p">Explore the Impact</a>
+   <a href="#value" class="hbtn hbtn-g">See How It Works</a>
+  </div>
+ </div>
+</section>
+
+<section class="sec">
+ <div class="container">
+  <div class="slabel">The Problem</div>
+  <h2 class="stitle">The most expensive care is often <em>the care no one asked for.</em></h2>
+  <div class="sdiv"></div>
+  <p class="btext">Seriously ill patients account for a growing share of hospital admissions, ICU days, and 30-day readmissions, much of it due to aggressive care that was never aligned with their values, because no one asked what mattered most to them. When surveyed, more than 80% of Americans say they would prefer less aggressive care at the end of life.</p>
+  <div class="stripcap">Seriously ill patients account for</div>
+  <div class="statstrip">
+   <div class="stat"><div class="n">5 &times;</div><div class="l">the national rate of ED visits</div></div>
+   <div class="stat"><div class="n">17 &times;</div><div class="l">the national rate of hospital admissions</div></div>
+   <div class="stat"><div class="n">2 &times;</div><div class="l">the national 30-day readmission rate</div></div>
+   <div class="stat"><div class="n">&lt; 20%</div><div class="l">ever get a goals-of-care discussion</div></div>
+  </div>
+  <div class="srcline">From our published study of high-risk seriously ill patients at MH-TMC and Harris Health (<a href="https://www.annemergmed.com/article/S0196-0644(25)00438-X/fulltext" style="color:var(--accent-d)">Ann Emerg Med, 2025</a>); national baselines per AHA and CDC.</div>
+  <div class="turn turn-cost">
+   <div class="tt">The average cost of a missed goals-of-care conversation, resulting in aggressive end-of-life care most patients never wanted.</div>
+   <div class="tn">~ $16K<span class="tu"> / patient</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="sec sec-alt">
+ <div class="container">
+  <div class="slabel">The Opportunity</div>
+  <h2 class="stitle">Quality goals-of-care discussions, <em>earlier in their course of hospitalization.</em></h2>
+  <div class="sdiv"></div>
+  <p class="btext">Structured goals-of-care workflows that pair clinicians with technology-mediated decision aids are the most consistently effective and scalable way to hold these conversations, producing not only better care, but improved hospital efficiency, downstream resource utilization, and lower acute cost of care.</p>
+  <div class="capband" style="grid-template-columns:repeat(3,1fr)">
+   <div class="capcell"><div class="n">~ 100</div><div class="l">Hospital bed-days returned / month</div></div>
+   <div class="capcell"><div class="n">~ 35</div><div class="l">ICU bed-days returned / month</div></div>
+   <div class="capcell"><div class="n">81%</div><div class="l">Higher chance of an ethical<br>transition to hospice</div></div>
+  </div>
+  <div class="srcline" style="margin-top:2.5rem">Per ~200 eligible patients a month, drawn from the strongest available evidence in the field's highest-impact peer-reviewed journals. Simply prompting physicians to have a GOC discussion, without ensuring a quality conversation, changes nothing.</div>
+ </div>
+</section>
+
+<section class="sec">
+ <div class="container">
+  <div class="slabel">Where The Obvious Fixes Fall Short</div>
+  <h2 class="stitle" style="max-width:880px">Education, culture change, and expanded palliative coverage have <em>failed to scale, study after study.</em></h2>
+  <div class="sdiv"></div>
+  <p class="btext" style="margin-bottom:1.5rem">It starts with two barriers every study points to, neither of which education or culture change can fix.</p>
+  <div class="barriers">
+   <div class="barrier">
+    <div class="bicon"><img src="/time-left.png" alt="Time"></div>
+    <div class="binfo">
+     <div class="btag"># 1 Studied Barrier</div>
+     <div class="bnum">Time</div>
+     <div class="bcopy">Across national surveys, physicians rank time as the number one barrier to goals-of-care discussions, above discomfort or fear of taking away hope. A quality conversation takes 45 to 60 minutes of uninterrupted bedside time that an acute-care shift rarely allows.</div>
+    </div>
+   </div>
+   <div class="barrier">
+    <div class="bicon"><img src="/skill.png" alt="Skill"></div>
+    <div class="binfo">
+     <div class="btag">Skill: The Training Gap</div>
+     <div class="bnum">&lt; 30%</div>
+     <div class="bcopy">Fewer than 30% of physicians have any formal training in goals-of-care discussions, even though nearly all agree it matters. Most feel unprepared, and self-rated confidence rarely matches the quality patients actually experience.</div>
+    </div>
+   </div>
+  </div>
+  <p class="btext" style="margin-top:2.6rem">Across landmark trials and real-world rollouts, each of these falls short.</p>
+  <div class="matrix">
+   <div class="mrow mhead"><div>Approach</div><div>Effect on goals-of-care</div><div>Scales?</div></div>
+   <div class="mrow"><div>More palliative FTEs</div><div class="meff">Effective, but costly and workforce-limited; complicated by a projected shortage of 18K palliative physicians.</div><div class="mno">&#10007;&nbsp; No</div></div>
+   <div class="mrow"><div>Education and culture alone</div><div class="meff">No change in goals-of-care or utilization.</div><div class="mno">&#10007;&nbsp; No</div></div>
+   <div class="mrow"><div>Clinician prompting alone</div><div class="meff">Prompting alone does not improve the quality and structure of the conversations, therefore yielding no impact on outcomes.</div><div class="mno">&#10007;&nbsp; No</div></div>
+   <div class="mrow mwin"><div>Integrated technology-mediated workflows</div><div class="meff">The only scalable, evidence-supported method that solves the time, skill, and documentation barriers at once.</div><div class="myes">&#10003;&nbsp; Yes</div></div>
+  </div>
+  <p class="srcline" style="margin-top:1rem">Documentation does not improve without workflow change. The palliative workforce cannot meet demand, with a projected shortage of up to 18,000 physicians.</p>
+ </div>
+</section>
+
+<section class="sec sec-alt" id="value">
+ <div class="container">
+  <div class="slabel">MHC's Value</div>
+  <h2 class="stitle">Traditional goals-of-care vs. <em>MHC-mediated goals-of-care workflows.</em></h2>
+  <div class="sdiv"></div>
+  <p class="btext">My Health Code removes both barriers: it gives physicians their time back, and supplies the structure they were never trained for.</p>
+  <div class="vsm">
+   <div class="vsrow vshead"><div class="vdim">&nbsp;</div><div class="vtrad">Traditional GOC</div><div class="vmhc">MHC-mediated GOC</div></div>
+   <div class="vsrow"><div class="vdim">When</div><div class="vtrad">Absent, or too late, occurring instead during a crisis or escalation to ICU.</div><div class="vmhc">Early, triggered on admission by a risk flag.</div></div>
+   <div class="vsrow"><div class="vdim">Physician time</div><div class="vtrad">45+ minutes of structured bedside time for an effective discussion.</div><div class="vmhc">65% reduction in time required; MHC educates and surveys the patient for a more informed, meaningful discussion.</div></div>
+   <div class="vsrow"><div class="vdim">Skill</div><div class="vtrad">High; often requires formal palliative training to be effective.</div><div class="vmhc">Minimal, as MHC's modules guide the physician step-by-step.</div></div>
+   <div class="vsrow"><div class="vdim">Consistency</div><div class="vtrad">Absent or ad hoc, varies by clinician and shift.</div><div class="vmhc">Every eligible patient, the same way, built on the leading evidence-, value-based frameworks.</div></div>
+   <div class="vsrow"><div class="vdim">Documentation</div><div class="vtrad">Buried in free-text of provider notes, not in the EMR's structured ACP section, yields unreliable and inconsistent care transitions.</div><div class="vmhc">POLST completed, ACP charted in the right Epic section.</div></div>
+   <div class="vsrow"><div class="vdim">Staffing</div><div class="vtrad">Limited by the palliative care workforce.</div><div class="vmhc">Runs on your existing staff, no new FTEs.</div></div>
+   <div class="vsrow"><div class="vdim">Metrics &amp; oversight</div><div class="vtrad">Requires human oversight tracking: ACP enrollment, documentation in free-text, quality of discussions, and effect on care transitions.</div><div class="vmhc">Automated operational dashboard tracking:<ul class="vlist"><li>every eligible patient</li><li>ACP pathway progress</li><li>pending tasks for completion</li></ul></div></div>
+  </div>
+  <div class="turn" style="margin-top:2.6rem">
+   <div class="tn">&gt; 55%</div>
+   <div class="tt">of MHC patients in our pilot identified values more consistent with conservative care paths, and transitioned to conservative care during the index encounter.</div>
+  </div>
+  <div class="value-cta"><a href="/index.html#how-it-works" class="wbtn">See How it Works Clinically</a></div>
+ </div>
+</section>
+
+<section id="calc">
+ <div class="container">
+  <div class="slabel">Understanding Your Cost Exposure</div>
+  <h2 class="stitle">How well do you really know <em>what runs under your own hood?</em></h2>
+  <p class="lead">Data is power. Four questions worth asking within your own institution.</p>
+  <div class="probe">
+   <div class="qcard"><div class="qn">1</div><div class="qcol"><div class="qt">What share of your seriously ill patients receive a goals-of-care discussion early in their hospital course?</div><div class="qs">That one number reveals your exposure to the cost and resource drain of value-discordant care.</div></div></div>
+   <div class="qcard"><div class="qn">2</div><div class="qcol"><div class="qt">Does your practice culture defer every goals-of-care discussion to palliative consultants, or only the complex ones?</div><div class="qs">Routing simple goals-of-care discussions to palliative consultants is like consulting cardiology to read a basic EKG: costly and resource-intensive. Let MHC handle the routine cases, and reserve your consultants for the complex ones.</div></div></div>
+   <div class="qcard"><div class="qn">3</div><div class="qcol"><div class="qt">Are you measuring the quality of those conversations, or only that they happened?</div><div class="qs">Quality discussions rely on the structured, evidence-based frameworks palliative physicians train on. MHC is built on those same frameworks, so any physician can lead one with the same rigor.</div></div></div>
+   <div class="qcard"><div class="qn">4</div><div class="qcol"><div class="qt">What is value-discordant care costing you each month, in beds, ICU days, and readmission penalties?</div><div class="qs">A hospital bed is a finite resource. Reserving each bed, ICU day, and aggressive treatment for the patients who want and consent to it is also how you meet Age-Friendly Health System measures.</div></div></div>
+  </div>
+  <p class="probe-close">The model below estimates the last one, pre-loaded with national benchmarks. Adjust anything you know.</p>
+
+  <div class="calc-shell">
+   <div class="panel">
+    <h3>Your Hospital</h3>
+    <div class="seg" id="preset">
+     <button data-p="quat" class="on">Commercial payer mix</button>
+     <button data-p="safety">Safety-net</button>
+    </div>
+    <div class="seg-help" id="presetHelp"></div>
+
+    <div class="grouplab">Clinical effect scenario<span class="info" style="margin-left:0.45rem;text-transform:none;letter-spacing:0">i<span class="tip">Estimates apply a 60% real-world implementation discount through a patient funnel (60% reach and 80% engagement). ICU days are treated as a subset of total length of stay to avoid double counting. Figures are projections for planning, validated on your own data during the pilot.</span></span></div>
+    <div class="seg" id="scenario">
+     <button data-s="cons" class="on">Conservative</button>
+     <button data-s="neut">Neutral</button>
+     <button data-s="aggr">Aggressive</button>
+    </div>
+    <div class="seg-help" id="scenHelp">Literature-anchored effect sizes. Conservative uses the low end of every published range. Sources: Kammili 2025, Johnson 2025, O'Connor 2018.</div>
+
+    <div class="grouplab">Volume and cost inputs</div>
+    <div class="fld" data-k="tap">
+     <div class="fld-top"><span class="fld-lab">Eligible patients / month<span class="info">i<span class="tip">High-risk inpatients flagged as candidates for a goals-of-care discussion, identified by an EHR query. One service line is typically around 200.</span></span></span><span class="fld-val" id="v-tap"></span></div>
+     <input type="range" id="s-tap" min="50" max="600" step="10">
+    </div>
+    <div class="fld" data-k="medsurg">
+     <div class="fld-top"><span class="fld-lab">Variable cost / Med-Surg day<span class="info">i<span class="tip">Direct variable cost per medical-surgical bed-day, excluding fixed overhead. National benchmark around $1,500.</span></span></span><span class="fld-val" id="v-medsurg"></span></div>
+     <div class="srange"><input type="range" id="s-medsurg" min="300" max="3000" step="5"><span class="tick" data-for="s-medsurg" data-avg="1500" style="left:44.44%" title="National average $1,500. Click to reset."></span></div>
+    </div>
+    <div class="fld" data-k="icu">
+     <div class="fld-top"><span class="fld-lab">Variable cost / ICU day<span class="info">i<span class="tip">Direct variable cost per ICU bed-day, higher due to staffing and equipment. National benchmark around $3,000.</span></span></span><span class="fld-val" id="v-icu"></span></div>
+     <div class="srange"><input type="range" id="s-icu" min="800" max="5000" step="10"><span class="tick" data-for="s-icu" data-avg="3000" style="left:52.38%" title="National average $3,000. Click to reset."></span></div>
+    </div>
+    <div class="fld" data-k="readmit">
+     <div class="fld-top"><span class="fld-lab">Cost / 30-day readmission<span class="info">i<span class="tip">Direct cost of one 30-day readmission episode. National average around $15,500.</span></span></span><span class="fld-val" id="v-readmit"></span></div>
+     <div class="srange"><input type="range" id="s-readmit" min="5000" max="60000" step="500"><span class="tick" data-for="s-readmit" data-avg="15500" style="left:19.09%" title="National average $15,500. Click to reset."></span></div>
+    </div>
+    <div class="fld" data-k="margin" id="fld-margin">
+     <div class="fld-top"><span class="fld-lab">Contribution margin / new admission<span class="info">i<span class="tip">Net revenue minus direct costs on a backfilled admission. Typically 8,000 to 10,000. Applies only when backfill is on.</span></span></span><span class="fld-val" id="v-margin"></span></div>
+     <input type="range" id="s-margin" min="0" max="20000" step="250">
+    </div>
+
+    <div class="switchrow" id="row-backfill">
+     <span class="lab">Include backfill opportunity<span class="info">i<span class="tip">Counts margin earned when freed beds are refilled with new admissions, at 75% of freed capacity and a 5-day average stay. Off for safety-net hospitals, which lack the payer mix to backfill at margin.</span></span></span>
+     <label class="switch"><input type="checkbox" id="s-backfill"><span class="slider-sw"></span></label>
+    </div>
+   </div>
+
+   <div>
+    <div class="out-hero">
+     <div class="cap">Projected annual value</div>
+     <div class="num" id="o-annual">$0</div>
+     <div class="sub" id="o-sub"></div>
+    </div>
+    <div class="tiles">
+     <div class="tile"><div class="tn" id="o-hospdays">0</div><div class="tl">Hospital bed-days saved / mo</div></div>
+     <div class="tile"><div class="tn" id="o-icudays">0</div><div class="tl">ICU bed-days saved / mo</div></div>
+     <div class="tile"><div class="tn" id="o-hard">$0</div><div class="tl">LOS and ICU hard savings / mo</div></div>
+     <div class="tile"><div class="tn" id="o-readmit">$0</div><div class="tl">Readmission savings / mo</div></div>
+     <div class="tile full" id="tile-margin"><div class="tn" id="o-margin">$0</div><div class="tl">Backfill opportunity margin / mo</div></div>
+    </div>
+    <div class="panel" style="margin-top:1.2rem;padding:1.4rem 1.6rem">
+     <div style="font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sl);font-weight:600">Monthly value composition</div>
+     <div class="bar" id="bar"></div>
+     <div class="barleg" id="barleg"></div>
+     <div style="display:flex;justify-content:space-between;margin-top:1rem;padding-top:0.9rem;border-top:1px solid rgba(110,138,160,0.18);font-size:0.9rem">
+      <span style="color:rgba(242,239,234,0.7)">Total monthly value</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.2rem;color:#fff" id="o-monthly">$0</span>
+     </div>
+    </div>
+    <p class="disc">Figures shown are illustrative projections for planning, based on published benchmarks and early pilot data - not a guarantee, warranty, or promise of financial results. Actual results vary by institution and would be validated on your own data during a pilot. Program cost is set together with your institution. <a href="/index.html#contact" style="color:var(--accent)">Let's talk through what it would take &rarr;</a></p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="cta">
+ <div class="container">
+  <div class="cta-box">
+   <div class="cta-head"><img src="/mhc-mark.png" alt="My Health Code" class="cta-mark"><h2>End-to-end advance care planning support.</h2></div>
+   <p class="cta-lede">Here to empower your existing staff to change the paradigm of end-of-life care. Here is what we'll tackle together during a pilot.</p>
+   <div class="pfeat">
+    <div class="pf">
+     <div class="pf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 19v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1"/><circle cx="9" cy="7" r="3"/><path d="M22 19v-1a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+     <div><div class="pf-t">Leadership partnership</div><div class="pf-d">We plan, scope, and map your goals-of-care operational endpoints alongside your departmental and institutional leadership.</div></div>
+    </div>
+    <div class="pf">
+     <div class="pf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div>
+     <div><div class="pf-t">Platform deployment</div><div class="pf-d">We deploy our technology-mediated shared decision-making platform directly into your clinical workflow.</div></div>
+    </div>
+    <div class="pf">
+     <div class="pf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg></div>
+     <div><div class="pf-t">Full operational support</div><div class="pf-d">Go-live support, ongoing technical support, and hands-on physician training on the app.</div></div>
+    </div>
+    <div class="pf">
+     <div class="pf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+     <div><div class="pf-t">Metrics that matter</div><div class="pf-d">Monthly tracking of eligible, enrolled, and completed patients, hospice transitions, and impact on hospital LOS, ICU LOS, and readmissions.</div></div>
+    </div>
+    <div class="pf pf-wide">
+     <div class="pf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+     <div><div class="pf-t">Built to fit</div><div class="pf-d">No new FTEs. Serverless hosting built to support HIPAA compliance, and optional EMR integration.</div></div>
+    </div>
+   </div>
+   <a href="/index.html#contact" class="cta-btn">Start a Pilot Conversation</a>
+  </div>
+ </div>
+</section>
+
+<section id="refs"><div class="container"><p style="font-size:0.86rem;color:var(--tm);margin:0 auto;text-align:center;max-width:62ch">Every figure on this page is sourced. The full evidence dossier and citations are shared during the pilot conversation.</p></div></section>
+
+<footer>
+ <div class="container">
+  <span>&copy; <span id="yr"></span> My Health Code &middot; Built at UTHealth Houston, McGovern Medical School</span>
+  <span><a href="/index.html#home">Main site</a> &nbsp;&middot;&nbsp; <a href="/index.html#contact">Contact</a></span>
+  <p style="flex-basis:100%;font-size:0.72rem;color:rgba(242,239,234,0.42);line-height:1.55;margin-top:0.9rem">My Health Code is a research and quality-improvement program developed at UTHealth Houston. Institutional names and logos are the property of their respective owners and indicate where research was conducted or validated; they do not imply endorsement, sponsorship, or partnership. All figures shown are estimates for discussion and are not a warranty or guarantee of clinical or financial outcomes.</p>
+ </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+var nav=document.getElementById('navbar');
+addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>30)});
+
+/* ===== Calculator ===== */
+var FUNNEL={reach:0.6,engage:0.8,effect:0.6}, BACKFILL_REALIZE=0.75, AVG_LOS_BACKFILL=5;
+var PRESETS={
+ quat:{tap:200,medsurg:1500,icu:3000,readmit:15500,margin:9000,backfill:true,
+   help:"Commercial-majority payer mix. Freed beds can be refilled with margin-positive admissions, so backfill value is counted. Cost inputs default to national benchmarks."},
+ safety:{tap:200,medsurg:1500,icu:3000,readmit:15500,margin:0,backfill:false,
+   help:"Safety-net hospital. Value comes from direct cost avoidance and readmission reduction; backfill margin is excluded. Cost inputs default to national benchmarks."}
+};
+var SCEN={cons:{hosplos:0.6,iculos:0.17,rdx:0.022},neut:{hosplos:1.71,iculos:0.60,rdx:0.056},aggr:{hosplos:2.82,iculos:0.98,rdx:0.090}};
+var curPreset='quat',curScen='cons';
+
+var ids=['tap','medsurg','icu','readmit','margin'];
+var S={}; ids.forEach(function(k){S[k]=document.getElementById('s-'+k)});
+var backfillEl=document.getElementById('s-backfill');
+
+function money(n){return '$'+Math.round(n).toLocaleString()}
+function moneyK(n){n=Math.round(n);
+ if(Math.abs(n)>=1e6)return '$'+(n/1e6).toFixed(2)+'M';
+ if(Math.abs(n)>=1e3)return '$'+(n/1e3).toFixed(0)+'K';
+ return '$'+n;}
+
+function applyPreset(p){
+ curPreset=p;var d=PRESETS[p];
+ S.tap.value=d.tap;S.medsurg.value=d.medsurg;S.icu.value=d.icu;S.readmit.value=d.readmit;S.margin.value=d.margin;
+ backfillEl.checked=d.backfill;
+ document.getElementById('presetHelp').textContent=d.help;
+ document.querySelectorAll('#preset button').forEach(function(b){b.classList.toggle('on',b.dataset.p===p)});
+ document.getElementById('row-backfill').style.display=(p==='safety')?'none':'flex';
+ syncBackfillUI();compute();
+}
+function syncBackfillUI(){
+ var on=backfillEl.checked&&curPreset!=='safety';
+ document.getElementById('fld-margin').style.display=on?'block':'none';
+ document.getElementById('tile-margin').style.display=on?'block':'none';
+}
+function setScenario(s){
+ curScen=s;
+ document.querySelectorAll('#scenario button').forEach(function(b){b.classList.toggle('on',b.dataset.s===s)});
+ compute();
+}
+
+function compute(){
+ var tap=+S.tap.value,medsurg=+S.medsurg.value,icu=+S.icu.value,readmit=+S.readmit.value,margin=+S.margin.value;
+ var sc=SCEN[curScen];
+ var backfill=backfillEl.checked&&curPreset!=='safety';
+
+ document.getElementById('v-tap').textContent=tap;
+ document.getElementById('v-medsurg').textContent=money(medsurg);
+ document.getElementById('v-icu').textContent=money(icu);
+ document.getElementById('v-readmit').textContent=money(readmit);
+ document.getElementById('v-margin').textContent=money(margin);
+
+ var engaged=tap*FUNNEL.reach*FUNNEL.engage;
+ var effective=engaged*FUNNEL.effect;
+ var hospDays=effective*sc.hosplos;
+ var icuDays=effective*sc.iculos;
+ var medsurgSav=Math.max(hospDays-icuDays,0)*medsurg;
+ var icuSav=icuDays*icu;
+ var hardLOS=medsurgSav+icuSav;
+ var readmitSav=effective*sc.rdx*readmit;
+ var newAdmits=backfill?hospDays/AVG_LOS_BACKFILL:0;
+ var oppMargin=backfill?newAdmits*margin*BACKFILL_REALIZE:0;
+ var gross=hardLOS+readmitSav+oppMargin;
+ var annual=gross*12;
+
+ document.getElementById('o-annual').textContent=moneyK(annual);
+ document.getElementById('o-monthly').textContent=money(gross);
+ document.getElementById('o-sub').textContent=money(gross)+' / month in cost avoidance'+(backfill?' and backfill margin':'');
+ document.getElementById('o-hospdays').textContent=hospDays.toFixed(1);
+ document.getElementById('o-icudays').textContent=icuDays.toFixed(1);
+ document.getElementById('o-hard').textContent=money(hardLOS);
+ document.getElementById('o-readmit').textContent=money(readmitSav);
+ document.getElementById('o-margin').textContent=money(oppMargin);
+
+ var parts=[['LOS and ICU savings',hardLOS,'#9db2c4'],['Readmission savings',readmitSav,'#6e8aa0']];
+ if(backfill)parts.push(['Backfill margin',oppMargin,'#44576a']);
+ var tot=parts.reduce(function(a,b){return a+b[1]},0)||1;
+ document.getElementById('bar').innerHTML=parts.map(function(p){return '<i style="width:'+(p[1]/tot*100)+'%;background:'+p[2]+'"></i>'}).join('');
+ document.getElementById('barleg').innerHTML=parts.map(function(p){return '<span><span class="dot" style="background:'+p[2]+'"></span>'+p[0]+' &middot; '+money(p[1])+'</span>'}).join('');
+}
+
+ids.forEach(function(k){S[k].addEventListener('input',compute)});
+backfillEl.addEventListener('change',function(){syncBackfillUI();compute()});
+document.querySelectorAll('#preset button').forEach(function(b){b.addEventListener('click',function(){applyPreset(b.dataset.p)})});
+document.querySelectorAll('#scenario button').forEach(function(b){b.addEventListener('click',function(){setScenario(b.dataset.s)})});
+
+applyPreset('quat');
+
+document.querySelectorAll('.tick').forEach(function(t){
+ t.addEventListener('click',function(){
+  var el=document.getElementById(t.dataset.for);
+  el.value=t.dataset.avg;
+  el.dispatchEvent(new Event('input'));
+ });
+});
+
+document.querySelectorAll('.cite a').forEach(function(a){
+ a.addEventListener('click',function(){var d=document.getElementById('refbox');if(d)d.open=true;});
+});
+</script>
+</body>
+</html>
